@@ -1,32 +1,24 @@
 use yew::prelude::*;
+use yew_router::prelude::*;
 
-enum Msg {
-  AddOne,
-}
+mod router;
+use router::{AppRoutes, switch};
 
-struct Model {
-  link: ComponentLink<Self>,
-  value: i64,
-}
+mod components;
+use components::NavButton;
+
+struct Model {}
 
 impl Component for Model {
-  type Message = Msg;
+  type Message = ();
   type Properties = ();
 
-  fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
-    Self {
-      link,
-      value: 0,
-    }
+  fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
+    Self {}
   }
 
-  fn update(&mut self, msg: Self::Message) -> ShouldRender {
-    match msg {
-      Msg::AddOne => {
-        self.value += 1;
-        true
-      }
-    }
+  fn update(&mut self, _msg: Self::Message) -> ShouldRender {
+    false
   }
 
   fn change(&mut self, _props: Self::Properties) -> ShouldRender {
@@ -35,9 +27,15 @@ impl Component for Model {
 
   fn view(&self) -> Html {
     html! {
-      <div align="center">
-        <button onclick=self.link.callback(|_| Msg::AddOne)>{ "+1" }</button>
-        <p>{ self.value }</p>
+      <div class="flex flex-col justify-center">
+        <div class="flex justify-evenly bg-red-800 text-white">
+          <NavButton to=AppRoutes::Home text="Home".to_string() />
+          <NavButton to=AppRoutes::Projects text="Projects".to_string() />
+          <NavButton to=AppRoutes::About text="About".to_string() />
+        </div>
+        <div class="flex justify-center">
+        <Router<AppRoutes> render= Router::render(switch)/>
+        </div>
       </div>        
     }
   }

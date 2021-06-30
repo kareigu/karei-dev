@@ -2,7 +2,7 @@
 release = true
 
 [watch]
-path = ["src", "static"]
+path = ["src"]
 ignore = []
 
 [serve]

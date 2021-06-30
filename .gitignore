@@ -1,3 +1,5 @@
 bin/
 target/
 dist/
+node_modules/
+yarn-error.log

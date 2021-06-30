@@ -13,9 +13,16 @@ func main() {
 	app := fiber.New(config)
 
 	app.Static("/", "./dist")
+	app.Get("/static/styles.css", func(c *fiber.Ctx) error {
+		return c.SendFile("./static/styles.css")
+	})
+
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.SendFile("./dist/index.html")
+	})
 
 	app.Get("*", func(c *fiber.Ctx) error {
-		return c.SendString("404")
+		return c.SendFile("./dist/index.html")
 	})
 
 	log.Fatal(app.Listen("localhost:2000"))
