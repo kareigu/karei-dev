@@ -5,7 +5,7 @@ mod router;
 use router::{AppRoutes, switch};
 
 mod components;
-use components::NavButton;
+use components::{NavButton, HomeButton};
 
 struct Model {}
 
@@ -29,7 +29,7 @@ impl Component for Model {
     html! {
       <div class="flex flex-col justify-center">
         <div class="flex justify-evenly bg-primary-accent-md">
-          <NavButton to=AppRoutes::Home text="Home".to_string() />
+          <HomeButton />
           <NavButton to=AppRoutes::Projects text="Projects".to_string() />
           <NavButton to=AppRoutes::About text="About".to_string() />
         </div>

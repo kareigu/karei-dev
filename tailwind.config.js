@@ -3,6 +3,10 @@ module.exports = {
   purge: ["./src/**/*.rs", "./index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      'nanum': ['Nanum Gothic'],
+      'mulish': ['Mulish']
+    },
     extend: {
       colors: {
         'primary-accent': {
