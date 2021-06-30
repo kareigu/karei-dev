@@ -40,8 +40,8 @@ impl Component for NavButton {
 
   fn view(&self) -> Html {
     let classes = classes!(
-      "text-white", "hover:text-black", 
-      "hover:bg-white", "transition-colors",
+      "text-base-lt", "hover:text-base-dk", 
+      "hover:bg-base-lt", "transition-colors",
       "rounded-md", "px-5", "py-1"
     );
     html! {

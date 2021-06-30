@@ -27,13 +27,13 @@ impl Component for Model {
 
   fn view(&self) -> Html {
     html! {
-      <div class="flex flex-col justify-center text-white">
-        <div class="flex justify-evenly bg-red-800 text-white">
+      <div class="flex flex-col justify-center">
+        <div class="flex justify-evenly bg-primary-accent-md">
           <NavButton to=AppRoutes::Home text="Home".to_string() />
           <NavButton to=AppRoutes::Projects text="Projects".to_string() />
           <NavButton to=AppRoutes::About text="About".to_string() />
         </div>
-        <div class="flex justify-center text-white">
+        <div class="flex justify-center mt-3">
         <Router<AppRoutes> render= Router::render(switch)/>
         </div>
       </div>        
