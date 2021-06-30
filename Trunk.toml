@@ -1,0 +1,12 @@
+[build]
+release = true
+
+[watch]
+path = ["src", "static"]
+ignore = []
+
+[serve]
+port = 5020
+
+[[proxy]]
+backend = "http://localhost:2000/"

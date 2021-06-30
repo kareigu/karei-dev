@@ -1,11 +1,18 @@
-b-build:
-	cd backend && make build
+go-build:
+	go build -v -o bin/main main.go
 
-b-run:
-	cd backend && make run
+go-run:
+	go run main.go
 
-f-build:
-	cd frontend && make build
+go-clean:
+	go clean
 
-f-serve:
-	cd frontend && make serve
+trunk-build:
+	trunk build
+
+trunk-serve:
+	trunk serve
+
+trunk-install:
+	cargo install trunk
+	cargo install wasm-bindgen-cli
