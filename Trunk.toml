@@ -2,8 +2,8 @@
 release = false
 
 [watch]
-path = ["src"]
-ignore = []
+path = ["./src"]
+ignore = ["./static"]
 
 [serve]
 port = 5020
