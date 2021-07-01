@@ -39,15 +39,10 @@ impl Component for NavButton {
   }
 
   fn view(&self) -> Html {
-    let classes = classes!(
-      "text-base-lt", "hover:text-base-dk", 
-      "hover:bg-base-lt", "transition-colors",
-      "rounded-md", "px-5", "py-1"
-    );
     html! {
       <Link<AppRoutes> 
         route=self.to.clone()
-        classes=classes
+        classes=classes!("text-base-lt hover:text-base-dk hover:bg-base-lt transition-colors rounded-md px-5 py-1".to_string())
       >
         { self.text.clone() }
       </Link<AppRoutes>>

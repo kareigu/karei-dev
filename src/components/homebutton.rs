@@ -21,17 +21,12 @@ impl Component for HomeButton {
   }
 
   fn view(&self) -> Html {
-    let classes = classes!(
-      "text-base-lt", "hover:text-base-dk", 
-      "hover:bg-base-lt", "transition-colors",
-      "rounded-md", "px-5", "py-1", "mr-auto",
-      "ml-1", "font-mulish"
-    );
     html! {
       <Link<AppRoutes> 
         route=AppRoutes::Home
-        classes=classes
+        classes=classes!("flex flex-row text-base-lt hover:text-base-dk hover:bg-base-lt transition-colors rounded-md px-3 py-1 mr-auto ml-0.5 font-mulish".to_string())
       >
+        <span class="w-6 h-6 mr-1.5 rounded-full bg-logo bg-contain" />
         { "mxrr.dev" }
       </Link<AppRoutes>>
     }

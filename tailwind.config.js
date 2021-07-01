@@ -29,7 +29,10 @@ module.exports = {
           'md': '#064174',
           'dk': '#011627'
         }
-      }
+      },
+      backgroundImage: theme => ({
+        'logo': "url('/static/logo.gif')"
+      })
     },
   },
   variants: {
