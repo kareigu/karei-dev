@@ -7,8 +7,11 @@ use router::{AppRoutes, switch};
 mod components;
 use components::{NavButton, HomeButton};
 
+mod pages;
+
 mod utils;
 use utils::get_current_page;
+
 
 
 pub enum Msg {
