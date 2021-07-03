@@ -9,3 +9,6 @@ edition = "2018"
 yew = {git = "https://github.com/yewstack/yew", branch = "master"}
 yew-router = { git = "https://github.com/yewstack/yew", branch="master" }
 yewtil = { git = "https://github.com/yewstack/yew", branch="master" }
+yew-services = { git = "https://github.com/yewstack/yew", branch="master" }
+anyhow = "1.0"
+serde = "1.0"

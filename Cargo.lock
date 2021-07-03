@@ -89,8 +89,11 @@ dependencies = [
 name = "frontend"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
+ "serde",
  "yew",
  "yew-router",
+ "yew-services",
  "yewtil",
 ]
 
@@ -510,6 +513,24 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
+]
+
+[[package]]
+name = "yew-services"
+version = "0.1.0"
+source = "git+https://github.com/yewstack/yew?branch=master#44d920b813c733f80d64c0cd2409861fae959267"
+dependencies = [
+ "anyhow",
+ "gloo",
+ "http",
+ "js-sys",
+ "serde",
+ "serde_json",
+ "thiserror",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "web-sys",
+ "yew",
 ]
 
 [[package]]
