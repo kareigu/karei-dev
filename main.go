@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
 func main() {
@@ -12,6 +13,7 @@ func main() {
 		ServerHeader: "mxrr.dev",
 	}
 	app := fiber.New(config)
+	app.Use(logger.New())
 
 	api := app.Group("/api")
 	apiv1.InitialiseV1(api)
