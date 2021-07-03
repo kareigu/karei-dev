@@ -18,6 +18,7 @@ func main() {
 	})
 
 	app.Static("/static", "./static")
+	app.Static("/files", "./files")
 
 	app.Get("*", func(c *fiber.Ctx) error {
 		return c.SendFile("./dist/index.html")
