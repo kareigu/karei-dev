@@ -7,7 +7,7 @@ pub struct Props {
   pub to: AppRoutes,
   pub text: String,
   pub active: AppRoutes,
-  pub b_rounding: String,
+  pub styles: Option<String>,
 }
 
 pub struct NavButton {
@@ -35,7 +35,7 @@ impl Component for NavButton {
   fn view(&self) -> Html {
     let mut classlist = classes!("text-base-lt hover:text-base-dk hover:bg-base-lt transition-colors rounded-t-md px-5 py-1".to_string());
 
-    classlist.push(self.props.b_rounding.clone());
+    classlist.push(self.props.styles.clone());
 
     if self.props.active == self.props.to {
       classlist.push("bg-primary-accent-dk border-b-4 border-tertiary-accent-md");

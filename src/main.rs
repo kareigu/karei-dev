@@ -70,13 +70,12 @@ impl Component for App {
             to=AppRoutes::Projects 
             text="Projects".to_string() 
             active=self.active_route.clone()
-            b_rounding="rounded-bl-md"
+            styles="rounded-bl-md"
           />
           <NavButton 
             to=AppRoutes::About
             text="About".to_string() 
             active=self.active_route.clone()
-            b_rounding=""
           />
         </div>
         <div class="flex justify-center mt-3">
