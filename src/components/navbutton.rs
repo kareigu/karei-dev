@@ -1,18 +1,17 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 use crate::router::AppRoutes;
-
+use yewtil::NeqAssign;
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
   pub to: AppRoutes,
   pub text: String,
   pub active: AppRoutes,
+  pub b_rounding: String,
 }
 
 pub struct NavButton {
-  to: AppRoutes,
-  text: String,
-  active: AppRoutes,
+  props: Props,
 }
 
 impl Component for NavButton {
@@ -21,9 +20,7 @@ impl Component for NavButton {
 
   fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
     Self {
-      to: props.to,
-      text: props.text,
-      active: props.active,
+      props
     }
   }
 
@@ -32,29 +29,26 @@ impl Component for NavButton {
   }
 
   fn change(&mut self, props: Self::Properties) -> ShouldRender {
-    if self.to == props.to && self.text == props.text && self.active == props.active {
-      false
-    } else {
-      self.to = props.to;
-      self.text = props.text;
-      self.active = props.active;
-      true
-    }
+    self.props.neq_assign(props)
   }
 
   fn view(&self) -> Html {
-    let mut classlist = classes!("text-base-lt hover:text-base-dk hover:bg-base-lt transition-colors rounded-md px-5 py-1".to_string());
+    let mut classlist = classes!("text-base-lt hover:text-base-dk hover:bg-base-lt transition-colors rounded-t-md px-5 py-1".to_string());
 
-    if self.active == self.to {
-      classlist.push("bg-tertiary-accent-md");
+    classlist.push(self.props.b_rounding.clone());
+
+    if self.props.active == self.props.to {
+      classlist.push("bg-primary-accent-dk border-b-4 border-tertiary-accent-md");
+    }  else {
+      classlist.push("border-b-4 border-base-lt");
     }
 
     html! {
       <Link<AppRoutes> 
-        route=self.to.clone()
+        route=self.props.to.clone()
         classes=classlist
       >
-        { self.text.clone() }
+        { self.props.text.clone() }
       </Link<AppRoutes>>
     }
   }

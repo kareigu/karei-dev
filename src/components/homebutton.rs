@@ -1,30 +1,46 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 use crate::router::AppRoutes;
+use yewtil::NeqAssign;
 
-pub struct HomeButton {}
+#[derive(Clone, PartialEq, Properties)]
+pub struct Props {
+  pub active: AppRoutes,
+}
+
+pub struct HomeButton {
+  props: Props,
+}
 
 impl Component for HomeButton {
   type Message = ();
-  type Properties = ();
+  type Properties = Props;
 
-  fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self {}
+  fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
+    Self {
+      props
+    }
   }
 
   fn update(&mut self, _msg: Self::Message) -> ShouldRender {
     false
   }
 
-  fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-    false
+  fn change(&mut self, props: Self::Properties) -> ShouldRender {
+    self.props.neq_assign(props)
   }
 
   fn view(&self) -> Html {
+    let mut classlist = classes!("flex flex-row text-base-lt hover:text-base-dk hover:bg-base-lt transition-colors rounded-r-md px-3 py-1 mr-auto ml-0 font-mulish".to_string());
+
+    if self.props.active == AppRoutes::Home {
+      classlist.push("bg-primary-accent-dk border-secondary-accent-md border-r-4");
+    }
+
     html! {
       <Link<AppRoutes> 
         route=AppRoutes::Home
-        classes=classes!("flex flex-row text-base-lt hover:text-base-dk hover:bg-base-lt transition-colors rounded-md px-3 py-1 mr-auto ml-0.5 font-mulish".to_string())
+        classes=classlist
       >
         <span class="w-6 h-6 mr-1.5 rounded-full bg-logo bg-contain" />
         { "mxrr.dev" }

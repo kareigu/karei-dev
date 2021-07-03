@@ -1,4 +1,8 @@
 use yew::prelude::*;
+use yew::virtual_dom::VNode;
+use yew::web_sys::console;
+use yew_router::RouteListener;
+use yew_router::__macro::build_router;
 use yew_router::prelude::*;
 use yew_router::current_route;
 
@@ -8,67 +12,83 @@ use router::{AppRoutes, switch};
 mod components;
 use components::{NavButton, HomeButton};
 
-struct Model {
-  active_route: AppRoutes,
+mod utils;
+use utils::get_current_page;
+
+
+pub enum Msg {
+  UpdateNavbar,
 }
 
-impl Component for Model {
-  type Message = ();
+struct App {
+  active_route: AppRoutes,
+  link: ComponentLink<App>,
+  test_string: String,
+}
+
+impl Component for App {
+  type Message = Msg;
   type Properties = ();
 
-  fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    let active_route = match current_route::<AppRoutes>() {
-      Some(route) => route,
-      None => AppRoutes::NotFound
-    };
+  fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
+    let active_route = get_current_page();
+
     Self {
       active_route,
+      link,
+      test_string: format!("{:?}", active_route),
     }
   }
 
-  fn update(&mut self, _msg: Self::Message) -> ShouldRender {
-    let active_route = match AppRoutes::current_route() {
-      Some(route) => route,
-      None => AppRoutes::NotFound
-    };
-
-    if self.active_route == active_route {
-      false
-    } else {
-      self.active_route = active_route;
-      true
+  fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    match msg {
+      Msg::UpdateNavbar => {
+        let new = get_current_page();
+        if new == self.active_route {
+          false
+        } else {
+          self.active_route = new;
+          true
+        }
+      }
     }
   }
 
   fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-    false    
+    false
   }
 
   fn view(&self) -> Html {
     html! {
       <div class="flex flex-col justify-center">
-        <div class="flex justify-evenly bg-primary-accent-md">
-          <HomeButton />
+        <div 
+          class="flex justify-evenly bg-primary-accent-md"
+          onclick=self.link.callback(|_| Msg::UpdateNavbar)
+        >
+          <HomeButton 
+            active=self.active_route.clone()
+          />
           <NavButton 
             to=AppRoutes::Projects 
             text="Projects".to_string() 
-            active=self.active_route.clone() 
+            active=self.active_route.clone()
+            b_rounding="rounded-bl-md"
           />
           <NavButton 
             to=AppRoutes::About
             text="About".to_string() 
-            active=self.active_route.clone() 
+            active=self.active_route.clone()
+            b_rounding=""
           />
         </div>
         <div class="flex justify-center mt-3">
-        <Router<AppRoutes> render= Router::render(switch)/>
+          <Router<AppRoutes> render= Router::render(switch)/>
         </div>
-        {format!("{:?}", self.active_route)}
       </div>        
     }
   }
 }
 
 fn main() {
-  yew::start_app::<Model>();
+  yew::start_app::<App>();
 }

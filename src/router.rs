@@ -1,7 +1,7 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-#[derive(Routable, Clone, PartialEq, Debug)]
+#[derive(Routable, Clone, PartialEq, Debug, Copy)]
 pub enum AppRoutes {
   #[at("/projects")]
   Projects,
