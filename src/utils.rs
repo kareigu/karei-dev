@@ -1,5 +1,5 @@
 use yew_router::Routable;
-use crate::router::AppRoutes;
+use crate::{App, router::AppRoutes};
 
 pub fn get_current_page() -> AppRoutes {
   let string_value = match yew::utils::document().url() {
@@ -11,4 +11,14 @@ pub fn get_current_page() -> AppRoutes {
   };
 
   AppRoutes::recognize(&string_value).unwrap_or(AppRoutes::NotFound)
+}
+
+pub fn update_menu_bar(app: &mut App) -> bool {
+  let new = get_current_page();
+  if new == app.active_route {
+    false
+  } else {
+    app.active_route = new;
+    true
+  }
 }

@@ -10,7 +10,7 @@ use components::{NavButton, HomeButton};
 mod pages;
 
 mod utils;
-use utils::get_current_page;
+use utils::{get_current_page, update_menu_bar};
 
 
 
@@ -18,7 +18,7 @@ pub enum Msg {
   UpdateNavbar,
 }
 
-struct App {
+pub struct App {
   active_route: AppRoutes,
   link: ComponentLink<App>,
   test_string: String,
@@ -40,15 +40,7 @@ impl Component for App {
 
   fn update(&mut self, msg: Self::Message) -> ShouldRender {
     match msg {
-      Msg::UpdateNavbar => {
-        let new = get_current_page();
-        if new == self.active_route {
-          false
-        } else {
-          self.active_route = new;
-          true
-        }
-      }
+      Msg::UpdateNavbar => update_menu_bar(self)
     }
   }
 
