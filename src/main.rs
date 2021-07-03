@@ -1,10 +1,5 @@
 use yew::prelude::*;
-use yew::virtual_dom::VNode;
-use yew::web_sys::console;
-use yew_router::RouteListener;
-use yew_router::__macro::build_router;
 use yew_router::prelude::*;
-use yew_router::current_route;
 
 mod router;
 use router::{AppRoutes, switch};
