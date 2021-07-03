@@ -58,11 +58,11 @@ impl Component for App {
 
   fn view(&self) -> Html {
     html! {
-      <div class="flex flex-col justify-center">
-        <div 
-          class="flex justify-evenly bg-primary-accent-md"
-          onclick=self.link.callback(|_| Msg::UpdateNavbar)
-        >
+      <div 
+        class="flex flex-col justify-center"
+        onclick=self.link.callback(|_| Msg::UpdateNavbar)
+      >
+        <div class="flex justify-evenly bg-primary-accent-md">
           <HomeButton 
             active=self.active_route.clone()
           />
