@@ -14,7 +14,7 @@
     "tailwindcss": "^2.2.4"
   },
   "scripts": {
-    "css:build": "postcss static/tailwind.css -o static/styles.css",
-    "css:watch": "postcss -w static/tailwind.css -o static/styles.css"
+    "css:build": "postcss styles/tailwind.css -o styles/styles.css",
+    "css:watch": "postcss -w styles/tailwind.css -o styles/styles.css"
   }
 }
