@@ -1,5 +1,7 @@
 use yew::prelude::*;
 use yewtil::NeqAssign;
+use crate::components::NavButton;
+use crate::router::AppRoutes;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
@@ -30,8 +32,14 @@ impl Component for NotFound {
   fn view(&self) -> Html {
     html! {
       <div class="flex flex-col justify-center items-center">
-        {"404"}
-        <img data-trunk="true" src="static/logo.gif" alt="logo" />
+        <h1 class="text-3xl my-3">{"404"}</h1>
+        <img data-trunk="true" src="static/PepegaSit.png" alt="404 - pepega" class="my-3" />
+        <NavButton 
+          to=AppRoutes::Home
+          text="Go back home"
+          active=AppRoutes::NotFound
+          styles="rounded-b-md bg-tertiary-accent-md mt-6"
+        />
       </div>
     }
   }
