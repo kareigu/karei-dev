@@ -1,6 +1,7 @@
 package main
 
 import (
+	"apiv1"
 	"log"
 
 	"github.com/gofiber/fiber/v2"
@@ -11,6 +12,9 @@ func main() {
 		ServerHeader: "mxrr.dev",
 	}
 	app := fiber.New(config)
+
+	api := app.Group("/api")
+	apiv1.InitialiseV1(api)
 
 	app.Static("/", "./dist")
 	app.Get("/static/styles.css", func(c *fiber.Ctx) error {
