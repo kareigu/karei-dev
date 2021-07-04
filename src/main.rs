@@ -52,7 +52,7 @@ impl Component for App {
         class="flex flex-col justify-center"
         onclick=self.link.callback(|_| Msg::UpdateNavbar)
       >
-        <div class="flex justify-evenly bg-primary-accent-md">
+        <div class="flex justify-evenly bg-gradient-to-tr from-primary-accent-md to-[#CF0246] filter drop-shadow-md">
           <HomeButton 
             active=self.active_route.clone()
           />
