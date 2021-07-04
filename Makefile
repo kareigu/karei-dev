@@ -16,3 +16,7 @@ trunk-serve:
 trunk-install:
 	cargo install trunk
 	cargo install wasm-bindgen-cli
+
+front:
+	yarn css:build
+	trunk build --release
