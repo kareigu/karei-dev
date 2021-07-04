@@ -1,7 +1,16 @@
 use yew::prelude::*;
 use yewtil::NeqAssign;
-use yew_services::{ConsoleService, fetch::FetchTask};
+use yew_services::{
+  ConsoleService, FetchService, 
+  fetch::{
+    FetchTask,
+    Request,
+    Response
+  }};
 use crate::components::{Button, Colour};
+use yew::format::{Nothing, Json};
+use anyhow::Error;
+use serde::Deserialize;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
@@ -131,12 +140,6 @@ impl Component for Forked {
 }
 
 fn get_forks(link: ComponentLink<Forked>) -> Option<FetchTask> {
-  use yew_services::FetchService;
-  use yew_services::fetch::Request;
-  use yew_services::fetch::{Response};
-  use yew::format::{Nothing, Json};
-  use anyhow::Error;
-
   let request = Request::get("/api/v1/forks")
     .body(Nothing)
     .expect("Failed to create request");
@@ -150,16 +153,11 @@ fn get_forks(link: ComponentLink<Forked>) -> Option<FetchTask> {
     Msg::Nothing
   });
 
-  let task: Option<FetchTask> = match FetchService::fetch(request, callback) {
+  match FetchService::fetch(request, callback) {
     Ok(f) => Some(f),
     Err(e) => {ConsoleService::error(format!("{:?}", e).as_str()); None},
-  };
-
-  task
+  }
 }
-
-use serde::Deserialize;
-
 #[derive(Deserialize, Debug, Clone)]
 pub struct Forks {
   forks: Vec<Fork>
