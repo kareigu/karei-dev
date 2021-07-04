@@ -9,13 +9,16 @@ pub struct Props {
 
 pub struct Forked {
   props: Props,
+  link: ComponentLink<Forked>,
   forks: Option<Vec<Fork>>,
-  task: Option<FetchTask>
+  task: Option<FetchTask>,
+  version_list_visible: bool,
 }
 
 pub enum Msg {
   RecForks(Forks),
   Nothing,
+  ToggleVersionList,
 }
 
 impl Component for Forked {
@@ -25,8 +28,10 @@ impl Component for Forked {
   fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
     Self {
       props,
+      link: link.clone(),
       task: get_forks(link),
       forks: None,
+      version_list_visible: false,
     }
   }
 
@@ -43,6 +48,10 @@ impl Component for Forked {
         self.task = None;
         false 
       },
+      Msg::ToggleVersionList => {
+        self.version_list_visible = !self.version_list_visible;
+        true
+      }
     }
   }
 
@@ -51,8 +60,17 @@ impl Component for Forked {
   }
 
   fn view(&self) -> Html {
+    let firefox_button = html! {
+      <Button 
+        text="Download for Firefox" 
+        colour=Colour::Custom("bg-gradient-to-br from-[#ff5b2d] to-[#ffc328]".to_string()) 
+        icon="/static/firefox.png" 
+      />
+    };
+    let base_url = "https://mxrr.dev/files/";
+
     html! {
-      <div class="flex flex-col justify-center items-center">
+      <div class="flex flex-col justify-center items-center mt-2">
         <h1 class="font-mulish lg:text-4xl md:text-3xl">{"Forked YouTube Gaming"}</h1>
         <img 
           src="https://raw.githubusercontent.com/mxrr/BetterYTG/master/src/assets/icons/BetterYTG_red_128.png" 
@@ -60,27 +78,53 @@ impl Component for Forked {
           class="w-64 h-64"
         />
 
-        <div class="flex flex-row justify-center">
-          <Button text="Download for Firefox" colour=Colour::Tertiary />
-          <Button text="Download for Chrome" colour=Colour::Custom("bg-secondary-accent-dk".to_string()) />
-        </div>
-        { 
-          if let Some(forks) = self.forks.clone() {
-            forks.into_iter()
-              .map(|f| html! {
-                <div>
-                  <p>{ f.version }</p>
-                  <p>{ f.filename }</p>
-                </div>
-            }).collect::<Html>()
-          } else {
-            html! {
-              <div>
-                <p>{ "Loading" }</p>
-              </div>
+        <div class="flex flex-row justify-center flex-wrap">
+          <div>
+          {
+            if let Some(forks) = &self.forks {
+              html! {
+                <>
+                  <a href={format!("{}{}", base_url, forks[0].filename)}>
+                    {firefox_button}
+                  </a>
+                  <div class="flex flex-col justify-center items-center">
+                    <span onclick={self.link.callback(|_| Msg::ToggleVersionList)}>
+                      <Button 
+                        text={ if self.version_list_visible { "Hide all versions" } else { "Show all versions" } } 
+                        colour=Colour::Secondary 
+                      />
+                    </span>
+                    { if self.version_list_visible {
+                        forks.into_iter()
+                        .map(|f| html! {
+                          <div>
+                            <a href={format!("{}{}", base_url, f.filename.clone())}>
+                              <Button text=f.version.clone() colour=Colour::Primary />
+                            </a>
+                          </div>
+                        }).collect::<Html>()
+                      } else {
+                        html!{}
+                      }
+                    }
+                  </div>
+                </>
+              }
+            } else {
+              {firefox_button}
             }
           }
-        }
+          </div>
+          <div>
+            <a href="https://chrome.google.com/webstore/detail/forked-youtube-gaming/dehjikmfbdokdlkkchepifefodnmkmld?hl=en">
+              <Button 
+                text="Download for Chrome" 
+                colour=Colour::Custom("bg-gradient-to-br from-[#dc4234] to-[#4086f4]".to_string())
+                icon="/static/chrome.png"
+              />
+            </a>
+          </div>
+        </div>
       </div>
     }
   }
