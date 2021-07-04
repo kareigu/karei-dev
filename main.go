@@ -3,6 +3,7 @@ package main
 import (
 	"apiv1"
 	"log"
+	"utils"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -18,6 +19,9 @@ func main() {
 	api := app.Group("/api")
 	apiv1.InitialiseV1(api)
 
+	app.Get("/", func(c *fiber.Ctx) error {
+		return utils.SendHtmlWithMeta(c, "/")
+	})
 	app.Static("/", "./dist")
 	app.Get("/static/styles.css", func(c *fiber.Ctx) error {
 		return c.SendFile("./static/styles.css")
@@ -27,7 +31,8 @@ func main() {
 	app.Static("/files", "./files")
 
 	app.Get("*", func(c *fiber.Ctx) error {
-		return c.SendFile("./dist/index.html")
+		path := c.OriginalURL()
+		return utils.SendHtmlWithMeta(c, path)
 	})
 
 	log.Fatal(app.Listen("localhost:2000"))
