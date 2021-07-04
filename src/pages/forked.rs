@@ -72,7 +72,7 @@ impl Component for Forked {
     let firefox_button = html! {
       <Button 
         text="Download for Firefox" 
-        colour=Colour::Custom("bg-gradient-to-br from-[#ff5b2d] to-[#ffc328]".to_string()) 
+        colour=Colour::Custom("bg-gradient-to-br from-[#ff5b2d] to-[#ffc328] hover:from-base-lt hover:to-base-lt".to_string()) 
         icon="/static/firefox.png" 
       />
     };
