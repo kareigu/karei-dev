@@ -21,7 +21,6 @@ pub enum Msg {
 pub struct App {
   active_route: AppRoutes,
   link: ComponentLink<App>,
-  test_string: String,
 }
 
 impl Component for App {
@@ -34,7 +33,6 @@ impl Component for App {
     Self {
       active_route,
       link,
-      test_string: format!("{:?}", active_route),
     }
   }
 
