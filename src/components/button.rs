@@ -18,6 +18,7 @@ pub struct Props {
   pub text: String,
   pub colour: Colour,
   pub styles: Option<String>,
+  pub icon: Option<String>,
 }
 
 pub struct Button {
@@ -55,9 +56,18 @@ impl Component for Button {
     classlist.push(colour);
     classlist.push(self.props.styles.clone());
 
+    let icon = if let Some(url) = &self.props.icon {
+      html! { <img src={url.clone()} alt="button icon" width="28px" height="28px" class="mr-2" />}
+    } else {
+      html!{}
+    };
+
     html! {
       <button class={classlist}>
-        { self.props.text.clone() }
+        <span class="flex flex-row justify-center items-center">
+          { icon }
+          { self.props.text.clone() }
+        </span>
       </button>
     }
   }
