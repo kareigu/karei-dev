@@ -119,7 +119,7 @@ impl Component for Forked {
             <a href="https://chrome.google.com/webstore/detail/forked-youtube-gaming/dehjikmfbdokdlkkchepifefodnmkmld?hl=en">
               <Button 
                 text="Download for Chrome" 
-                colour=Colour::Custom("bg-gradient-to-br from-[#dc4234] to-[#4086f4]".to_string())
+                colour=Colour::Custom("bg-[#4086f4]".to_string())
                 icon="/static/chrome.png"
               />
             </a>
