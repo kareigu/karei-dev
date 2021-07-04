@@ -1,5 +1,7 @@
 use yew::prelude::*;
 use yewtil::NeqAssign;
+use yew_router::components::Link;
+use crate::router::AppRoutes;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
@@ -29,9 +31,25 @@ impl Component for Home {
 
   fn view(&self) -> Html {
     html! {
-      <div class="flex flex-col justify-center items-center">
-        {"Home"}
-        <img data-trunk="true" src="static/logo.gif" alt="logo" />
+      <div class="flex flex-col justify-center items-center mt-10">
+        <div class="w-52 h-52 rounded-full bg-logo bg-cover mt-56" >
+          <div class="w-52 h-52 rounded-full border-secondary-accent-lt border-2 animate-ping select-none absolute pointer-events-none">
+            <div class="w-52 h-52 rounded-full border-tertiary-accent-md border-2 animate-ping select-none absolute pointer-events-none"/>
+          </div>
+        </div>
+
+        
+        <div class="flex flex-col justify-center items-center mb-10 mt-56 bg-black bg-opacity-20 pt-5 px-14 rounded-md hover:border-2 hover:border-base-lt">
+          <Link<AppRoutes> route=AppRoutes::Forked classes=classes!("flex flex-col justify-center items-center".to_string())>
+            <h1 class="font-mulish lg:text-4xl md:text-3xl select-none">{"Forked YouTube Gaming"}</h1>
+            <img 
+              src="https://raw.githubusercontent.com/mxrr/BetterYTG/master/src/assets/icons/BetterYTG_red_128.png" 
+              alt="forkedytg logo"
+              class="w-64 h-64"
+            />
+          </Link<AppRoutes>>
+        </div>
+        
       </div>
     }
   }
