@@ -1,6 +1,4 @@
 use yew::prelude::*;
-use yew_router::prelude::*;
-use crate::router::AppRoutes;
 use yewtil::NeqAssign;
 use serde::Deserialize;
 use crate::components::Icon;

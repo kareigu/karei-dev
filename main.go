@@ -27,7 +27,6 @@ func main() {
 		return c.SendFile("./static/styles.css")
 	})
 
-	//app.Static("/static", "./static")
 	app.Static("/files", "./files")
 
 	app.Get("*", func(c *fiber.Ctx) error {
