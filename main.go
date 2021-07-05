@@ -6,15 +6,29 @@ import (
 	"utils"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/utahta/go-cronowriter"
 )
 
 func main() {
 	config := fiber.Config{
 		ServerHeader: "mxrr.dev",
 	}
+
+	w := cronowriter.MustNew("logs/%d-%m-%Y.log")
+
 	app := fiber.New(config)
+	app.Use(logger.New(logger.Config{
+		Output: w,
+	}))
 	app.Use(logger.New())
+	app.Use(compress.New(compress.Config{
+		Next: func(c *fiber.Ctx) bool {
+			return utils.CheckCompress(c.OriginalURL())
+		},
+		Level: compress.LevelBestSpeed,
+	}))
 
 	api := app.Group("/api")
 	apiv1.InitialiseV1(api)

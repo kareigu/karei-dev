@@ -63,3 +63,7 @@ func SendHtmlWithMeta(c *fiber.Ctx, path string) error {
 	c.Set("Content-Type", "text/html")
 	return c.SendString(indexWithMeta)
 }
+
+func CheckCompress(path string) bool {
+	return strings.Contains(path, "/static") || strings.Contains(path, "/files")
+}
