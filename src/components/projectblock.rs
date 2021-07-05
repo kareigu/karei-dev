@@ -32,14 +32,14 @@ impl Component for ProjectBlock {
 
   fn view(&self) -> Html {
     html! {
-      <div class="flex flex-col bg-black bg-opacity-30 sm:w-11/12 md:w-3/6 sm:h-80 md:h-2/6 my-6 mx-16 rounded-md">
+      <div class="flex flex-col bg-black bg-opacity-30 w-11/12 md:w-[38rem] h-auto md:h-[34rem] my-6 mx-16 md:mx-8 rounded-md">
         <div class="flex justify-center rounded-t-md bg-gradient-to-br from-tertiary-accent-md to-tertiary-accent-dk">
-          <h1 class="sm:text-2xl md:text-3xl font-mulish select-none">{ &self.props.project.name }</h1>
+          <h1 class="text-2xl md:text-3xl font-mulish select-none">{ &self.props.project.name }</h1>
         </div>
-        <img src={format!("/files/{}", &self.props.project.img)} alt={format!("{} banner", &self.props.project.name)} />
-        <p class="overflow-hidden px-5 py-3 md:text-base sm:text-xs self-center">{ &self.props.project.description }</p>
+        <img class="max-h-[405px]" src={format!("/files/{}", &self.props.project.img)} alt={format!("{} banner", &self.props.project.name)} />
+        <p class="overflow-hidden px-5 py-3 md:text-base text-xs self-center">{ &self.props.project.description }</p>
 
-        <div class="flex justify-end bg-gradient-to-bl from-secondary-accent-md to-secondary-accent-dk rounded-b-lg">
+        <div class="flex justify-end bg-gradient-to-bl mt-auto from-secondary-accent-md to-secondary-accent-dk rounded-b-lg">
           {
             self.props.project.links.other.iter()
               .map(|l| {

@@ -64,7 +64,7 @@ impl Component for Projects {
   fn view(&self) -> Html {
     ConsoleService::log(format!("{:?}", self).as_str());
     html! {
-      <div class="flex flex-col justify-center items-center">
+      <div class="flex flex-col desktop:flex-row desktop:flex-wrap justify-center items-center">
         { 
           if let Some(projects) = &self.projects {
             projects.iter()
