@@ -48,5 +48,5 @@ func main() {
 		return utils.SendHtmlWithMeta(c, path)
 	})
 
-	log.Fatal(app.Listen(":2000"))
+	log.Fatal(app.ListenTLS(":3030", "./certs/cert.pem", "./certs/key.pem"))
 }

@@ -4,7 +4,7 @@ services:
     container_name: mxrr-dev
     restart: unless-stopped
     ports:
-      - 2000:2000
+      - 3030:3030
     volumes:
       - ./pagedata:/go/src/mxrr-dev/pagedata
       - ./files:/go/src/mxrr-dev/files
