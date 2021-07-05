@@ -73,7 +73,7 @@ impl Component for Projects {
               })
               .collect()
           } else {
-            html! { <h1>{ "Loading" }</h1> }
+            html! { <img src="/static/spinner.svg" alt="loading spinner" /> }
           }
         }
       </div>
