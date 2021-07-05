@@ -86,6 +86,7 @@ impl Component for Forked {
           alt="forkedytg logo"
           class="w-64 h-64"
         />
+        <h2 class="mb-4 text-center">{ "ForkedYTG enhances YouTube livestreams with more emotes (Twitch, BTTV Emotes), new features, and more." }</h2>
 
         <div class="flex flex-row justify-center flex-wrap">
           <div>
