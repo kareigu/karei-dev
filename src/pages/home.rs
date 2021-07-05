@@ -33,7 +33,7 @@ impl Component for Home {
     html! {
       <div class="flex flex-col justify-center items-center mt-10">
         <div class="w-52 h-52 rounded-full bg-logo bg-cover mt-56" >
-          <div class="w-52 h-52 rounded-full border-tertiary-accent-lt border-2 select-none pointer-events-none">
+          <div class="w-52 h-52 rounded-full border-primary-accent-md border-2 select-none pointer-events-none">
             <div class="w-52 h-52 rounded-full border-secondary-accent-md border-2 animate-pulse sm:animate-ping select-none pointer-events-none"/>
           </div>
         </div>
