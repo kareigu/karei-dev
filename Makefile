@@ -20,3 +20,6 @@ trunk-install:
 front:
 	yarn css:build
 	trunk build --release
+
+docker:
+	docker build -t mxr/mxrr-dev:new .

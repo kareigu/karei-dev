@@ -48,5 +48,5 @@ func main() {
 		return utils.SendHtmlWithMeta(c, path)
 	})
 
-	log.Fatal(app.Listen("localhost:2000"))
+	log.Fatal(app.Listen(":2000"))
 }
