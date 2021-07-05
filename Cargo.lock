@@ -90,6 +90,7 @@ name = "frontend"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "js-sys",
  "serde",
  "yew",
  "yew-router",

@@ -8,6 +8,9 @@ module.exports = {
       'mulish': ['Mulish']
     },
     extend: {
+      screens: {
+        'desktop': '1280px'
+      },
       colors: {
         'primary-accent': {
           'lt': '#ff0a5c',

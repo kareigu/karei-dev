@@ -14,3 +14,9 @@ pub use projectblock::Project;
 
 mod icon;
 pub use icon::Icon;
+
+mod experience_container;
+pub use experience_container::{ExperienceContainer, ListItem};
+
+mod general_container;
+pub use general_container::{GeneralContainer, TableItem, Type};

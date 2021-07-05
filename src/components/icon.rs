@@ -5,6 +5,7 @@ use yewtil::NeqAssign;
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
   pub icon: String,
+  pub disable_invert: Option<bool>,
 }
 
 pub struct Icon {
@@ -34,11 +35,24 @@ impl Component for Icon {
       "gh" => "/static/GitHub-Mark-32px.png",
       "image" => "/static/image.png",
       "compass" => "/static/compass.png",
+      "linked-in" => "/static/linked-in.png",
+      "steam" => "/static/steam.png",
+      "twitter" => "/static/twitter.png",
       _ => "",
     };
 
+    let class = if let Some(b) = self.props.disable_invert {
+      if !b {
+        classes!("filter invert m-2".to_string())
+      } else {
+        classes!("m-2")
+      }
+    } else {
+      classes!("m-2")
+    };
+
     html! {
-      <img class="filter invert m-2" src={ icon } alt={ self.props.icon.clone() } width="24px" height="24px" />
+      <img class=class src={ icon } alt={ self.props.icon.clone() } width="24px" height="24px" />
     }
   }
 }
