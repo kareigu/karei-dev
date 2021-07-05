@@ -40,7 +40,7 @@ impl Component for About {
 
     html! {
       <div class="flex flex-col justify-center items-center overflow-x-hidden">
-        <div class="w-screen bg-gradient-to-t from-base-dk via-base-md to-base-dk py-2">
+        <div class="py-2">
           <div class="flex justify-center items-center mb-4">
             <a class=social_classes.clone() href="https://github.com/mxrr" target="_blank">
               <Icon icon="gh" />

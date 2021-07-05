@@ -47,7 +47,7 @@ impl Component for GeneralContainer {
 
     html! {
       <div class="flex flex-col justify-center bg-black bg-opacity-30 rounded-md w-[calc(100vw-0.75rem)] md:w-[36rem] my-6 mx-2 md:mx-8">
-        <div class="flex flex-row justify-center items-center bg-gradient-to-tr from-primary-accent-dk to-primary-accent-md py-2 rounded-t-md">
+        <div class="flex flex-row justify-center items-center primary-accent-wavy py-2 rounded-t-md">
           <h1 class=title_styles>{ &self.props.title }</h1>
         </div>
         
@@ -71,7 +71,7 @@ impl Component for GeneralContainer {
             }
           }
         </div>
-        <div class="mt-4 flex justify-center pb-2 bg-secondary-accent-dk rounded-b-md h-2" />
+        <div class="mt-4 flex justify-center pb-2 circle-bg bg-opacity-70 bg-secondary-accent-lt rounded-b-md h-2" />
       </div>
     }
   }

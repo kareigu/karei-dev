@@ -50,7 +50,7 @@ impl Component for ExperienceContainer {
 
     html! {
       <div class="flex flex-col justify-center bg-black bg-opacity-30 rounded-md w-[calc(100vw-0.75rem)] md:w-[36rem] my-6 mx-2 md:mx-8">
-        <div class="flex flex-row justify-center items-center bg-gradient-to-tr from-primary-accent-dk to-primary-accent-md rounded-t-md">
+        <div class="flex flex-row justify-center items-center primary-accent-wavy rounded-t-md">
           <img class="ml-1 mr-auto rounded-full bg-base-lt border-2 border-tertiary-accent-lt" src={ self.props.img.clone() } alt="company logo" width="48px" height="48px" />
           <div class="flex flex-col justify-center items-center mx-auto">
             <h1 class=title_styles>{ &self.props.title }</h1>
@@ -65,8 +65,8 @@ impl Component for ExperienceContainer {
             { self.props.children.clone() }
           </ul>
         </div>
-        <div class="mt-4 flex justify-center pb-2 bg-tertiary-accent-dk rounded-b-md">
-          <h2>{ format!("⏳{}", &self.props.timespan) }</h2>
+        <div class="mt-4 flex justify-center items-center py-2 bg-tertiary-accent-dk bg-opacity-70 tertiary-zigzag rounded-b-md">
+          <h2 class="bg-black bg-opacity-50 rounded-md">{ format!("⏳{}", &self.props.timespan) }</h2>
         </div>
       </div>
     }

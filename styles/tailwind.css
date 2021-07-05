@@ -28,4 +28,8 @@
     background-size: 20px 35px;
     background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
   }
+
+  .tertiary-zigzag {
+    background: linear-gradient(135deg, #dc890455 25%, transparent 25%) -4px 0/ 8px 8px, linear-gradient(225deg, #dc8904 25%, transparent 25%) -4px 0/ 8px 8px, linear-gradient(315deg, #dc890455 25%, transparent 25%) 0px 0/ 8px 8px, linear-gradient(45deg, #dc8904 25%, #fbb13c 25%) 0px 0/ 8px 8px;
+  }
 }
