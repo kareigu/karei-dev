@@ -2,13 +2,9 @@ FROM node:alpine as css_builder
 
 WORKDIR /usr/src/mxrr-dev
 
-COPY ./Cargo.toml ./Cargo.toml
-COPY ./Cargo.lock ./Cargo.lock
 COPY ./src ./src
-COPY ./static ./static
 COPY ./styles ./styles
 COPY ./index.html ./index.html
-COPY ./favicon.ico ./favicon.ico
 COPY ./package.json ./package.json
 COPY ./postcss.config.js ./postcss.config.js
 COPY ./tailwind.config.js ./tailwind.config.js
@@ -37,13 +33,8 @@ COPY ./Cargo.lock ./Cargo.lock
 RUN rm src/*.rs
 COPY ./src ./src
 COPY ./static ./static
-COPY ./styles ./styles
 COPY ./index.html ./index.html
 COPY ./favicon.ico ./favicon.ico
-COPY ./package.json ./package.json
-COPY ./postcss.config.js ./postcss.config.js
-COPY ./tailwind.config.js ./tailwind.config.js
-COPY ./yarn.lock ./yarn.lock
 
 COPY --from=css_builder /usr/src/mxrr-dev/styles ./styles
 
