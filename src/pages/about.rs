@@ -40,7 +40,7 @@ impl Component for About {
 
     html! {
       <div class="flex flex-col justify-center items-center overflow-x-hidden">
-        <div class="py-2">
+        <div class="py-2 animate-blur-in">
           <div class="flex justify-center items-center mb-4">
             <a class=social_classes.clone() href="https://github.com/mxrr" target="_blank">
               <Icon icon="gh" />
@@ -195,7 +195,7 @@ impl Component for About {
           </div>
         </div>
 
-        <div class="flex flex-col justify-center items-center mb-6">
+        <div class="flex flex-col justify-center items-center mb-6 animate-blur-in">
           <h2 class="font-mulish text-2xl">{ "Contact" }</h2>
           <p>{ "email: mail@mxrr.dev" }</p>
 

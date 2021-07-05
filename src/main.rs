@@ -70,8 +70,8 @@ impl Component for App {
             active=self.active_route.clone()
           />
         </div>
-        <div class="flex justify-center mt-3">
-          <Router<AppRoutes> render= Router::render(switch)/>
+        <div class="flex justify-center mt-3 animate-blur-in">
+          <Router<AppRoutes> render=Router::render(switch)/>
         </div>
       </div>        
     }

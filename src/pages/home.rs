@@ -31,7 +31,7 @@ impl Component for Home {
 
   fn view(&self) -> Html {
     html! {
-      <div class="flex flex-col justify-center items-center mt-10">
+      <div class="flex flex-col justify-center items-center mt-10 animate-blur-in">
         <div class="w-52 h-52 rounded-full bg-logo bg-cover mt-56" >
           <div class="w-52 h-52 rounded-full border-primary-accent-md border-2 select-none pointer-events-none">
             <div class="w-52 h-52 rounded-full border-secondary-accent-md border-2 animate-pulse sm:animate-ping select-none pointer-events-none"/>
@@ -39,7 +39,7 @@ impl Component for Home {
         </div>
 
         
-        <div class="flex flex-col justify-center items-center mt-56 bg-black bg-opacity-20 mb-20 pt-5 px-14 rounded-md hover:border-2 hover:border-base-lt">
+        <div class="flex flex-col justify-center items-center animate-slide-up mt-56 bg-black bg-opacity-20 mb-20 pt-5 px-14 rounded-md hover:border-2 hover:border-base-lt">
           <Link<AppRoutes> route=AppRoutes::Forked classes=classes!("flex flex-col justify-center items-center".to_string())>
             <h1 class="font-mulish lg:text-4xl md:text-3xl select-none">{"Forked YouTube Gaming"}</h1>
             <img 

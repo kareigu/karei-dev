@@ -79,7 +79,7 @@ impl Component for Forked {
     let base_url = "https://mxrr.dev/files/";
 
     html! {
-      <div class="flex flex-col justify-center items-center mt-2">
+      <div class="flex flex-col justify-center items-center mt-2 animate-blur-in">
         <h1 class="font-mulish lg:text-4xl md:text-3xl">{"Forked YouTube Gaming"}</h1>
         <img 
           src="https://raw.githubusercontent.com/mxrr/BetterYTG/master/src/assets/icons/BetterYTG_red_128.png" 
@@ -88,7 +88,7 @@ impl Component for Forked {
         />
         <h2 class="mb-4 text-center">{ "ForkedYTG enhances YouTube livestreams with more emotes (Twitch, BTTV Emotes), new features, and more." }</h2>
 
-        <div class="flex flex-row justify-center flex-wrap">
+        <div class="flex flex-row justify-center flex-wrap animate-slide-up">
           <div>
           {
             if let Some(forks) = &self.forks {
@@ -107,7 +107,7 @@ impl Component for Forked {
                     { if self.version_list_visible {
                         forks.into_iter()
                         .map(|f| html! {
-                          <div>
+                          <div class="animate-blur-in">
                             <a href={format!("{}{}", base_url, f.filename.clone())}>
                               <Button text=f.version.clone() colour=Colour::Primary />
                             </a>
