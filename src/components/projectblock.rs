@@ -50,9 +50,18 @@ impl Component for ProjectBlock {
               })
               .collect::<Html>()
           }
-          <a class="animate-pulse hover:filter hover:invert transition-all" href={format!("{}", &self.props.project.links.git)} target="_blank">
-            <Icon icon="gh" />
-          </a>
+          {
+            if &self.props.project.links.git != "" {
+              html! {
+                <a class="animate-pulse hover:filter hover:invert transition-all" href={format!("{}", &self.props.project.links.git)} target="_blank">
+                  <Icon icon="gh" />
+                </a>
+              }
+            } else {
+              html! {}
+            }
+          }
+          
         </div>
       </div>
     }
