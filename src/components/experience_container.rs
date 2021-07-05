@@ -65,7 +65,7 @@ impl Component for ExperienceContainer {
             { self.props.children.clone() }
           </ul>
         </div>
-        <div class="mt-4 flex justify-center items-center py-2 bg-tertiary-accent-dk bg-opacity-70 tertiary-zigzag rounded-b-md">
+        <div class="flex justify-center items-center py-2 bg-tertiary-accent-dk bg-opacity-70 tertiary-zigzag rounded-b-md">
           <h2 class="bg-black bg-opacity-50 rounded-md">{ format!("⏳{}", &self.props.timespan) }</h2>
         </div>
       </div>
@@ -102,7 +102,7 @@ impl Component for ListItem {
 
   fn view(&self) -> Html {
     html! {
-      <li class="odd:bg-white odd:bg-opacity-10 px-4 py-1">{ &self.props.text }</li>
+      <li class="odd:bg-white odd:bg-opacity-10 px-4 py-1 last:pb-4">{ &self.props.text }</li>
     }
   }
 }

@@ -71,7 +71,7 @@ impl Component for GeneralContainer {
             }
           }
         </div>
-        <div class="mt-4 flex justify-center pb-2 circle-bg bg-opacity-70 bg-secondary-accent-lt rounded-b-md h-2" />
+        <div class="flex justify-center pb-2 circle-bg bg-opacity-70 bg-secondary-accent-lt rounded-b-md h-2" />
       </div>
     }
   }
