@@ -7,7 +7,7 @@
 
 @layer components {
   .circle-bg {
-    background-image: radial-gradient(circle at center center, #444cf7, #e5e5f7), repeating-radial-gradient(circle at center center, #444cf7, #444cf7, 10px, transparent 20px, transparent 10px);
+    background-image: radial-gradient(circle at center center, #218380, #104140), repeating-radial-gradient(circle at center center, #218380, #218380, 4px, transparent 8px, transparent 4px);
     background-blend-mode: multiply;
   }
 
@@ -16,7 +16,11 @@
   }
 
   .diagonal-bg {
-    background: repeating-linear-gradient( 45deg, #444cf7, #444cf7 5px, #e5e5f7 5px, #e5e5f7 25px );
+    background: repeating-linear-gradient( 45deg, #990033, #990033 2px, #660022 2px, #660022 10px );
+  }
+
+  .primary-accent-wavy {
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #660022 4px ), repeating-linear-gradient( #99003355, #990033 );   
   }
 
   .isometric-bg {
