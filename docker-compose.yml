@@ -9,3 +9,4 @@ services:
       - ./pagedata:/go/src/mxrr-dev/pagedata
       - ./files:/go/src/mxrr-dev/files
       - ./logs:/go/src/mxrr-dev/logs
+      - ./certs:/go/src/mxrr-dev/certs
