@@ -38,9 +38,9 @@ impl Component for NavButton {
     classlist.push(self.props.styles.clone());
 
     if self.props.active == self.props.to {
-      classlist.push("bg-primary-accent-dk border-b-4 border-tertiary-accent-md");
+      classlist.push("bg-primary-accent-dk bg-opacity-50 border-b-4 border-secondary-accent-md");
     }  else {
-      classlist.push("border-b-4 border-base-lt");
+      classlist.push("bg-primary-accent-dk bg-opacity-30 border-b-4 border-base-lt");
     }
 
     html! {

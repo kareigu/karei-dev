@@ -46,13 +46,15 @@ impl Component for App {
     false
   }
 
+//bg-gradient-to-tr from-primary-accent-md to-[#CF0246]
+
   fn view(&self) -> Html {
     html! {
       <div 
         class="flex flex-col justify-center"
         onclick=self.link.callback(|_| Msg::UpdateNavbar)
       >
-        <div class="flex justify-evenly bg-gradient-to-tr from-primary-accent-md to-[#CF0246] filter drop-shadow-md">
+        <div class="flex justify-evenly bg-primary-accent-md bg-opacity-80 isometric-bg filter drop-shadow-md">
           <HomeButton 
             active=self.active_route.clone()
           />
