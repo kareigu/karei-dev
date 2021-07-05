@@ -49,7 +49,6 @@ COPY go.* ./
 COPY ./utils ./utils
 COPY ./apiv1 ./apiv1
 COPY ./Makefile ./Makefile
-COPY ./certs ./certs
 
 RUN go get -d -v ./...
 RUN apk add --update make
