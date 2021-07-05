@@ -4,3 +4,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .circle-bg {
+    background-image: radial-gradient(circle at center center, #444cf7, #e5e5f7), repeating-radial-gradient(circle at center center, #444cf7, #444cf7, 10px, transparent 20px, transparent 10px);
+    background-blend-mode: multiply;
+  }
+
+  .wavy-bg {
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #011627 10px ), repeating-linear-gradient( #104140, #660022 );
+  }
+}
