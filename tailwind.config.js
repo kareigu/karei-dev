@@ -33,8 +33,12 @@ module.exports = {
           'dk': '#011627'
         }
       },
+      transitionProperty: {
+        'border': 'border-radius',
+      },
       backgroundImage: theme => ({
-        'logo': "url('/static/logo.gif')"
+        'logo': "url('/static/logo.gif')",
+        'primary-middle-blend': `linear-gradient(#990033, transparent, #660022)`,
       }),
       animation: {
         'slide-up': 'slide-up 250ms ease-in-out',
