@@ -14,7 +14,7 @@ RUN yarn
 RUN yarn css:build
 
 
-FROM rust as rust_builder
+FROM rust:bullseye as rust_builder
 
 WORKDIR /usr/src
 
@@ -22,11 +22,19 @@ RUN USER=root cargo new --bin mxrr-dev
 
 WORKDIR /usr/src/mxrr-dev
 
-RUN cargo install trunk
+RUN bash -cl "wget -qO- https://github.com/thedodd/trunk/releases/download/v0.11.0/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-"
+RUN bash -cl "mv ./trunk /usr/bin/"
 
-RUN cargo install wasm-bindgen-cli
+RUN bash -cl "wget -O wasm-bindgen.tar.gz https://github.com/rustwasm/wasm-bindgen/releases/download/0.2.74/wasm-bindgen-0.2.74-x86_64-unknown-linux-musl.tar.gz \
+    && tar -xf wasm-bindgen.tar.gz \
+    && mv wasm-bindgen-0.2.74-x86_64-unknown-linux-musl wasm-bindgen"
+RUN bash -cl "mv ./wasm-bindgen/wasm-bindgen /usr/bin/"
+RUN bash -cl "mv ./wasm-bindgen/wasm-bindgen-test-runner /usr/bin/"
+RUN bash -cl "rm -r ./wasm-bindgen/"
 
 RUN rustup target add wasm32-unknown-unknown
+
+RUN apt-get update && apt-get install build-essential -y
 
 COPY ./Cargo.toml ./Cargo.toml
 COPY ./Cargo.lock ./Cargo.lock
@@ -47,7 +55,7 @@ WORKDIR /go/src/mxrr-dev
 COPY ./main.go ./main.go
 COPY go.* ./
 COPY ./utils ./utils
-COPY ./apiv1 ./apiv1
+COPY ./api ./api
 COPY ./Makefile ./Makefile
 
 RUN go get -d -v ./...
