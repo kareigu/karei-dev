@@ -42,11 +42,17 @@ module.exports = {
       }),
       animation: {
         'slide-up': 'slide-up 250ms ease-in-out',
+        'slide-down': 'slide-down 250ms ease-in-out',
         'blur-in': 'blur 350ms ease-in-out'
       },
       keyframes: {
         'slide-up': {
           '0%': { opacity: 0, transform: 'translateY(120px)'},
+          '100%': { opacity: 1, transform: 'translateY(0px)'}
+        },
+        'slide-down': {
+          '0%': { opacity: 0, transform: 'translateY(-60px)'},
+          '50%': { opacity: 0, transform: 'translateY(-60px)'},
           '100%': { opacity: 1, transform: 'translateY(0px)'}
         },
         'blur': {
