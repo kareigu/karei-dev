@@ -1,7 +1,7 @@
 package main
 
 import (
-	"apiv1"
+	"api"
 	"log"
 	"utils"
 
@@ -30,8 +30,8 @@ func main() {
 		Level: compress.LevelBestSpeed,
 	}))
 
-	api := app.Group("/api")
-	apiv1.InitialiseV1(api)
+	apiGroup := app.Group("/api")
+	api.Initialise(apiGroup)
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return utils.SendHtmlWithMeta(c, "/")
