@@ -46,7 +46,7 @@ impl Component for GeneralContainer {
     };
 
     html! {
-      <div class="flex flex-col justify-center animate-slide-up bg-black bg-opacity-30 rounded-md w-[calc(100vw-0.75rem)] md:w-[36rem] my-6 mx-2 md:mx-8">
+      <div class="flex flex-col justify-center animate-slide-up desktop:animate-blur-in bg-black bg-opacity-30 rounded-md w-[calc(100vw-0.75rem)] md:w-[36rem] my-6 mx-2 md:mx-8">
         <div class="flex flex-row justify-center items-center primary-accent-wavy py-2 rounded-t-md">
           <h1 class=title_styles>{ &self.props.title }</h1>
         </div>

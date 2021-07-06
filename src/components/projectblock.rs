@@ -32,7 +32,7 @@ impl Component for ProjectBlock {
 
   fn view(&self) -> Html {
     html! {
-      <div class="flex flex-col animate-slide-up bg-black bg-opacity-30 w-11/12 md:w-[38rem] h-auto md:h-[34rem] my-6 mx-16 md:mx-8 rounded-t-md rounded-b-lg">
+      <div class="flex flex-col animate-slide-up desktop:animate-blur-in bg-black bg-opacity-30 w-11/12 md:w-[38rem] h-auto md:h-[34rem] my-6 mx-16 md:mx-8 rounded-t-md rounded-b-lg">
         <div class="flex justify-center rounded-t-md circle-bg bg-opacity-70 bg-secondary-accent-lt">
           <h1 class="text-2xl md:text-3xl font-mulish select-none">{ &self.props.project.name }</h1>
         </div>
