@@ -66,7 +66,7 @@ impl Component for ExperienceContainer {
           </ul>
         </div>
         <div class="flex justify-center items-center py-2 bg-tertiary-accent-dk bg-opacity-70 tertiary-zigzag rounded-b-md">
-          <h2 class="bg-black bg-opacity-50 rounded-md">{ format!("⏳{}", &self.props.timespan) }</h2>
+          <h2 class="bg-black bg-opacity-50 px-1 rounded-md">{ format!("⏳{}", &self.props.timespan) }</h2>
         </div>
       </div>
     }
