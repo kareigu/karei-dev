@@ -7,19 +7,13 @@ go-run:
 go-clean:
 	go clean
 
-trunk-build:
-	trunk build
-
-trunk-serve:
-	trunk serve
-
 trunk-install:
 	cargo install trunk
 	cargo install wasm-bindgen-cli
 
 front:
 	yarn css:build
-	trunk build --release
+	trunk build
 
 docker:
 	docker build -t mxr/mxrr-dev:new .
