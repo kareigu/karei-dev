@@ -54,24 +54,30 @@ impl Component for App {
         class="flex flex-col justify-center"
         onclick=self.link.callback(|_| Msg::UpdateNavbar)
       >
-        <div class="flex justify-evenly bg-primary-accent-md bg-opacity-80 isometric-bg filter drop-shadow-md">
-          <HomeButton 
-            active=self.active_route.clone()
-          />
-          <NavButton 
-            to=AppRoutes::Projects 
-            text="Projects".to_string() 
-            active=self.active_route.clone()
-            styles="rounded-bl-md"
-          />
-          <NavButton 
-            to=AppRoutes::About
-            text="About".to_string() 
-            active=self.active_route.clone()
-          />
+        <div class="primary-zigzag filter drop-shadow-md">
+          <div class="flex justify-evenly bg-primary-middle-blend">
+            <HomeButton 
+              active=self.active_route.clone()
+            />
+            <span id="projects-btn" class="flex flex-col">
+            <NavButton 
+              to=AppRoutes::Projects 
+              text="Projects".to_string() 
+              active=self.active_route.clone()
+              styles="rounded-bl-md"
+            />
+            </span>
+            <span id="about-btn" class="flex flex-col">
+            <NavButton 
+              to=AppRoutes::About
+              text="About".to_string() 
+              active=self.active_route.clone()
+            />
+            </span>
+          </div>
         </div>
         <div class="flex justify-center mt-3 animate-blur-in">
-          <Router<AppRoutes> render=Router::render(switch)/>
+          <Router<AppRoutes> render=Router::render(switch) />
         </div>
       </div>        
     }

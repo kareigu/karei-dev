@@ -88,7 +88,7 @@ impl Component for Forked {
         />
         <h2 class="mb-4 text-center">{ "ForkedYTG enhances YouTube livestreams with more emotes (Twitch, BTTV Emotes), new features, and more." }</h2>
 
-        <div class="flex flex-row justify-center flex-wrap animate-slide-up">
+        <div class="flex flex-row justify-center flex-wrap animate-blur-in">
           <div>
           {
             if let Some(forks) = &self.forks {
@@ -107,7 +107,7 @@ impl Component for Forked {
                     { if self.version_list_visible {
                         forks.into_iter()
                         .map(|f| html! {
-                          <div class="animate-blur-in">
+                          <div class="animate-slide-down">
                             <a href={format!("{}{}", base_url, f.filename.clone())}>
                               <Button text=f.version.clone() colour=Colour::Primary />
                             </a>

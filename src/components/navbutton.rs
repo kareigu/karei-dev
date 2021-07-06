@@ -33,14 +33,14 @@ impl Component for NavButton {
   }
 
   fn view(&self) -> Html {
-    let mut classlist = classes!("text-base-lt hover:text-base-dk hover:bg-base-lt transition-colors rounded-t-md px-5 py-1".to_string());
+    let mut classlist = classes!("text-base-lt hover:text-base-dk hover:bg-base-lt rounded-l-md transition-all px-5 py-1".to_string());
 
     classlist.push(self.props.styles.clone());
 
     if self.props.active == self.props.to {
-      classlist.push("bg-primary-accent-dk bg-opacity-50 border-b-4 border-secondary-accent-md");
+      classlist.push("bg-primary-accent-dk bg-opacity-50 border-l-4 border-secondary-accent-md");
     }  else {
-      classlist.push("bg-primary-accent-dk bg-opacity-30 border-b-4 border-base-lt");
+      classlist.push("bg-primary-accent-dk bg-opacity-30 border-l-4 border-base-lt");
     }
 
     html! {

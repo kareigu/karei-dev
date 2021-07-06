@@ -1,7 +1,7 @@
 use yew::prelude::*;
 use yewtil::NeqAssign;
 
-
+#[allow(dead_code)]
 #[derive(Clone, PartialEq)]
 pub enum Colour {
   Primary,
