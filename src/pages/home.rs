@@ -39,7 +39,7 @@ impl Component for Home {
         </div>
 
         
-        <div class="flex flex-col justify-center items-center animate-slide-up mt-56 bg-black bg-opacity-20 mb-20 pt-5 px-14 rounded-md hover:border-2 hover:border-base-lt">
+        <div class="flex flex-col justify-center transition-all items-center animate-slide-up mt-56 bg-black bg-opacity-20 mb-20 pt-5 px-14 rounded-md border-2 border-black border-opacity-20 hover:border-opacity-100 hover:border-base-lt">
           <Link<AppRoutes> route=AppRoutes::Forked classes=classes!("flex flex-col justify-center items-center".to_string())>
             <h1 class="font-mulish lg:text-4xl md:text-3xl select-none">{"Forked YouTube Gaming"}</h1>
             <img 
