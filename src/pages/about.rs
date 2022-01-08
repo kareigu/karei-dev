@@ -65,13 +65,26 @@ impl Component for About {
             <h1 class="font-mulish text-4xl">{ "Experience" }</h1>
             <ExperienceContainer 
               img="/static/abb.png" 
-              title="Summer Intern" 
+              title="IT Trainee (part-time)" 
+              location="Helsinki, Finland" 
+              company="ABB Drives"
+              timespan="October 2021 - Present"
+            >
+            <>
+              <ListItem text="More work on an algorithm for automating instruction generation (TypeScript)" />
+              <ListItem text="Creating a program for automating AR-workspace cleanup (TypeScript)" />
+            </>
+            </ExperienceContainer>
+            <ExperienceContainer 
+              img="/static/abb.png" 
+              title="IT Summer Trainee" 
               location="Helsinki, Finland" 
               company="ABB Drives"
               timespan="End of May - Mid-August 2021"
             >
             <>
               <ListItem text="Creating animated service manual instructions from 3D-models" />
+              <ListItem text="Worked on creating an algorithm for automating instruction generation (TypeScript)" />
               <ListItem text="Working on an augmented reality application (Angular.js)" />
             </>
             </ExperienceContainer>
@@ -189,6 +202,7 @@ impl Component for About {
                   <dd>{"Adobe Premiere"}</dd>
                   <dd>{"DaVinci Resolve"}</dd>
                   <dd>{"Cubase"}</dd>
+                  <dd>{"Blender"}</dd>
                 </dl>
               </li>
             </GeneralContainer>
