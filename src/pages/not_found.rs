@@ -33,7 +33,7 @@ impl Component for NotFound {
     html! {
       <div class="flex flex-col justify-center items-center animation-">
         <h1 class="text-3xl my-3">{"404"}</h1>
-        <img data-trunk="true" src="static/PepegaSit.png" alt="404 - pepega" class="my-3" />
+        <img data-trunk="true" src="/static/PepegaSit.png" alt="404 - pepega" class="my-3" />
         <NavButton 
           to=AppRoutes::Home
           text="Go back home"
