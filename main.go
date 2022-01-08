@@ -25,7 +25,7 @@ func main() {
 	app.Use(logger.New())
 	app.Use(compress.New(compress.Config{
 		Next: func(c *fiber.Ctx) bool {
-			return utils.CheckCompress(c.OriginalURL())
+			return utils.CheckCompress(c.Path())
 		},
 		Level: compress.LevelBestSpeed,
 	}))
