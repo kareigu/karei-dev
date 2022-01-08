@@ -7,11 +7,11 @@ use crate::router::AppRoutes;
 pub struct Props {
 }
 
-pub struct NotFound {
+pub struct Images {
   props: Props,
 }
 
-impl Component for NotFound {
+impl Component for Images {
   type Message = ();
   type Properties = Props;
 
@@ -32,7 +32,7 @@ impl Component for NotFound {
   fn view(&self) -> Html {
     html! {
       <div class="flex flex-col justify-center items-center animation-">
-        <h1 class="text-3xl my-3">{"404"}</h1>
+        <h1 class="text-3xl my-3">{"Images"}</h1>
         <img data-trunk="true" src="/static/PepegaSit.png" alt="404 - pepega" class="my-3" />
         <NavButton 
           to=AppRoutes::Home
