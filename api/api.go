@@ -1,7 +1,7 @@
 package api
 
 import (
-	"v1"
+	v1 "mxrr-dev/api/v1"
 
 	"github.com/gofiber/fiber/v2"
 )

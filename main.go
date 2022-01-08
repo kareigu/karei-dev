@@ -1,9 +1,9 @@
 package main
 
 import (
-	"api"
 	"log"
-	"utils"
+	"mxrr-dev/api"
+	"mxrr-dev/utils"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
