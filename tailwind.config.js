@@ -1,7 +1,6 @@
 module.exports = {
   mode: "jit",
-  purge: ["./src/**/*.rs", "./index.html"],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./src/**/*.rs", "./index.html"],
   theme: {
     fontFamily: {
       'nanum': ['Nanum Gothic'],
