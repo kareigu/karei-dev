@@ -37,7 +37,7 @@ impl Component for ProjectBlock {
           <h1 class="text-2xl md:text-3xl font-mulish select-none">{ &self.props.project.name }</h1>
         </div>
         <img class="max-h-[405px]" src={format!("/files/{}", &self.props.project.img)} alt={format!("{} banner", &self.props.project.name)} />
-        <p class="overflow-hidden px-5 py-3 md:text-base text-xs self-center">{ &self.props.project.description }</p>
+        <p class="overflow-hidden px-5 py-3 md:text-base text-center text-xs self-center">{ &self.props.project.description }</p>
 
         <div class="flex justify-end mt-auto primary-accent-wavy rounded-b-lg">
           {
