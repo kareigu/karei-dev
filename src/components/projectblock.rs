@@ -44,7 +44,7 @@ impl Component for ProjectBlock {
             self.props.project.links.other.iter()
               .map(|l| {
                 html! {
-                  <a class="animate-pulse hover:filter hover:invert transition-all" href={l.link.clone()} target="_blank">
+                  <a class="animate-pulse filter invert hover:invert-0 transition-all" href={l.link.clone()} target="_blank">
                     <Icon icon={l.icon.clone()} />
                   </a>}
               })
@@ -53,7 +53,7 @@ impl Component for ProjectBlock {
           {
             if &self.props.project.links.git != "" {
               html! {
-                <a class="animate-pulse hover:filter hover:invert transition-all" href={format!("{}", &self.props.project.links.git)} target="_blank">
+                <a class="animate-pulse filter invert hover:invert-0 transition-all" href={format!("{}", &self.props.project.links.git)} target="_blank">
                   <Icon icon="gh" />
                 </a>
               }
