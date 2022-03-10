@@ -73,6 +73,7 @@ impl Component for About {
             <>
               <ListItem text="More work on an algorithm for automating instruction generation (TypeScript)" />
               <ListItem text="Creating a program for automating AR-workspace cleanup (TypeScript)" />
+              <ListItem text="Working on an augmented reality application (Angular.js)" />
             </>
             </ExperienceContainer>
             <ExperienceContainer 
@@ -132,7 +133,7 @@ impl Component for About {
               title="BBA - Business Information Technology" 
               location="Pasila, Helsinki, Finland" 
               company="Haaga-Helia University of Applied Sciences"
-              timespan="August 2019 - Current"
+              timespan="August 2019 - Present"
             >
             <>
               <ListItem text="Majoring in software development" />
@@ -143,6 +144,7 @@ impl Component for About {
               <TableItem label="🇫🇮 Finnish:" text="🔵🔵🔵🔵🔵" />
               <TableItem label="🇬🇧 English:" text="🔵🔵🔵🔵🔵" />
               <TableItem label="🇸🇪 Swedish:" text="🔵🔵🔵⚫⚫" />
+              <TableItem label="🇯🇵 Japanese:" text="🔵⚫⚫⚫⚫" />
               <TableItem label="🇩🇪 German:" text="🔵⚫⚫⚫⚫" />
             </GeneralContainer>
 
@@ -177,6 +179,7 @@ impl Component for About {
                   <dl>{"💾 Development software:"}</dl>
                   <dd>{"Visual Studio Code"}</dd>
                   <dd>{"Atom"}</dd>
+                  <dd>{"vim"}</dd>
                   <dd>{"npm & yarn"}</dd>
                   <dd>{"Unreal Engine 4"}</dd>
                   <dd>{"MongoDB"}</dd>
@@ -211,7 +214,7 @@ impl Component for About {
 
         <div class="flex flex-col justify-center items-center mb-6 animate-blur-in">
           <h2 class="font-mulish text-2xl">{ "Contact" }</h2>
-          <p>{ "email: mail@mxrr.dev" }</p>
+          <p>{ "mail@mxrr.dev" }</p>
 
           <a class="hover:filter hover:invert" href="https://www.linkedin.com/in/eetu-kivel%C3%A4-6b2a66204/" target="_blank">
             <Icon icon="linked-in" />
