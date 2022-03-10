@@ -45,10 +45,10 @@ impl Component for About {
             <a class=social_classes.clone() href="https://github.com/mxrr" target="_blank">
               <Icon icon="gh" />
             </a>
-            <a class=social_classes.clone() href="https://twitter.com/mxrrr_" target="_blank">
+            <a class=social_classes.clone() href="https://twitter.com/kareigu" target="_blank">
               <Icon icon="twitter" disable_invert=true />
             </a>
-            <a class=social_classes.clone() href="https://steamcommunity.com/id/mxr-/" target="_blank">
+            <a class=social_classes.clone() href="https://steamcommunity.com/id/kareigu/" target="_blank">
               <Icon icon="steam" disable_invert=true />
             </a>
           </div>
