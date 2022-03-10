@@ -1,26 +1,23 @@
 use yew::prelude::*;
 use yewtil::NeqAssign;
 use crate::components::{ProjectBlock, Project};
-use serde::Deserialize;
 use yew_services::{
-  ConsoleService, FetchService, 
+  ConsoleService, 
   fetch::{
     FetchTask,
-    Request,
-    Response
 }};
-use anyhow::Error;
-use yew::format::{Json, Nothing};
+use crate::utils;
 
 #[derive(Clone, PartialEq, Properties, Debug)]
 pub struct Props {
 }
 
 pub enum Msg {
-  RecProjects(ProjectRes),
+  RecProjects(utils::ProjectRes),
   Nothing
 }
 
+#[allow(dead_code)]
 #[derive(Debug)]
 pub struct Projects {
   props: Props,
@@ -37,7 +34,7 @@ impl Component for Projects {
     Self {
       props,
       link: link.clone(),
-      task: get_projects(link),
+      task: utils::get_projects(link),
       projects: None,
     }
   }
@@ -82,28 +79,3 @@ impl Component for Projects {
 }
 
 
-fn get_projects(link: ComponentLink<Projects>) -> Option<FetchTask> {
-  let request = Request::get("/api/v1/projects")
-    .body(Nothing)
-    .expect("Failed to create request");
-
-  let callback = link.callback(|response: Response<Json<Result<ProjectRes, Error>>>| {
-    if let (meta, Json(Ok(body))) = response.into_parts() {
-      if meta.status.is_success() {
-        return Msg::RecProjects(body);
-      }
-    }
-    Msg::Nothing
-  });
-
-  match FetchService::fetch(request, callback) {
-    Ok(f) => Some(f),
-    Err(e) => {ConsoleService::error(format!("{:?}", e).as_str()); None},
-  }
-}
-
-
-#[derive(Deserialize, Debug, Clone)]
-pub struct ProjectRes {
-  projects: Vec<Project>,
-}
