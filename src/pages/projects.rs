@@ -21,6 +21,7 @@ pub enum Msg {
   Nothing
 }
 
+#[allow(dead_code)]
 #[derive(Debug)]
 pub struct Projects {
   props: Props,
