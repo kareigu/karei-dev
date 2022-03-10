@@ -1,6 +1,6 @@
 use yew::prelude::*;
 use yew_router::Routable;
-use crate::pages::{Projects, ProjectsMsg};
+use crate::pages::ProjectsMsg;
 use crate::{App, router::AppRoutes};
 use crate::components::Project;
 use serde::Deserialize;
@@ -37,7 +37,9 @@ pub fn update_menu_bar(app: &mut App) -> bool {
 }
 
 
-pub fn get_projects(link: ComponentLink<Projects>) -> Option<FetchTask> {
+pub fn get_projects<T: yew::Component>(link: ComponentLink<T>) -> Option<FetchTask>
+where T::Message: From<ProjectsMsg>
+{
   let request = Request::get("/api/v1/projects")
     .body(Nothing)
     .expect("Failed to create request");
