@@ -4,6 +4,7 @@ pub use home::Home;
 
 mod projects;
 pub use projects::Projects;
+pub use projects::Msg as ProjectsMsg;
 
 mod about;
 pub use about::About;
