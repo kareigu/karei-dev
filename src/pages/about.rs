@@ -42,7 +42,7 @@ impl Component for About {
       <div class="flex flex-col justify-center items-center overflow-x-hidden">
         <div class="py-2 animate-blur-in">
           <div class="flex justify-center items-center mb-4">
-            <a class=social_classes.clone() href="https://github.com/mxrr" target="_blank">
+            <a class=social_classes.clone() href="https://github.com/kareigu" target="_blank">
               <Icon icon="gh" />
             </a>
             <a class=social_classes.clone() href="https://twitter.com/kareigu" target="_blank">
