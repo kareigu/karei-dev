@@ -45,7 +45,7 @@ impl Component for HomeButton {
         classes=classlist
       >
         <span class="w-6 h-6 mr-1.5 rounded-full bg-logo bg-contain" />
-        { "mxrr.dev" }
+        { "karei.dev" }
       </Link<AppRoutes>>
     }
   }
