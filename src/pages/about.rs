@@ -214,7 +214,7 @@ impl Component for About {
 
         <div class="flex flex-col justify-center items-center mb-6 animate-blur-in">
           <h2 class="font-mulish text-2xl">{ "Contact" }</h2>
-          <p>{ "mail@mxrr.dev" }</p>
+          <p>{ "mail@karei.dev" }</p>
 
           <a class="hover:filter hover:invert" href="https://www.linkedin.com/in/eetu-kivel%C3%A4-6b2a66204/" target="_blank">
             <Icon icon="linked-in" />
