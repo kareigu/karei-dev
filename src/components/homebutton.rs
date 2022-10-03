@@ -1,6 +1,6 @@
+use crate::router::AppRoutes;
 use yew::prelude::*;
 use yew_router::prelude::*;
-use crate::router::AppRoutes;
 use yewtil::NeqAssign;
 
 #[derive(Clone, PartialEq, Properties)]
@@ -17,9 +17,7 @@ impl Component for HomeButton {
   type Properties = Props;
 
   fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self {
-      props
-    }
+    Self { props }
   }
 
   fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -40,7 +38,7 @@ impl Component for HomeButton {
     }
 
     html! {
-      <Link<AppRoutes> 
+      <Link<AppRoutes>
         route=AppRoutes::Home
         classes=classlist
       >

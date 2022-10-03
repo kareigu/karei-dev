@@ -1,7 +1,6 @@
 use yew::prelude::*;
 use yewtil::NeqAssign;
 
-
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
   pub icon: String,
@@ -17,9 +16,7 @@ impl Component for Icon {
   type Properties = Props;
 
   fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self {
-      props
-    }
+    Self { props }
   }
 
   fn update(&mut self, _msg: Self::Message) -> ShouldRender {

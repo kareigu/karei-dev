@@ -10,7 +10,6 @@ pub enum Colour {
   Custom(String),
 }
 
-
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
   pub text: String,
@@ -28,9 +27,7 @@ impl Component for Button {
   type Properties = Props;
 
   fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self {
-      props
-    }
+    Self { props }
   }
 
   fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -49,7 +46,10 @@ impl Component for Button {
       Colour::Custom(s) => s,
     };
 
-    let mut classlist = classes!("text-base-lt hover:text-base-dk hover:bg-base-lt transition-colors rounded-md px-5 py-1 m-2".to_string());
+    let mut classlist = classes!(
+      "text-base-lt hover:text-base-dk hover:bg-base-lt transition-colors rounded-md px-5 py-1 m-2"
+        .to_string()
+    );
 
     classlist.push(colour);
     classlist.push(self.props.styles.clone());
@@ -57,7 +57,7 @@ impl Component for Button {
     let icon = if let Some(url) = &self.props.icon {
       html! { <img src={url.clone()} alt="button icon" width="28px" height="28px" class="mr-2" />}
     } else {
-      html!{}
+      html! {}
     };
 
     html! {

@@ -1,25 +1,22 @@
+use crate::components::Project;
+use crate::pages::ProjectsMsg;
+use crate::{router::AppRoutes, App};
+use anyhow::Error;
+use serde::Deserialize;
+use yew::format::{Json, Nothing};
 use yew::prelude::*;
 use yew_router::Routable;
-use crate::pages::ProjectsMsg;
-use crate::{App, router::AppRoutes};
-use crate::components::Project;
-use serde::Deserialize;
 use yew_services::{
-  ConsoleService, FetchService, 
-  fetch::{
-    FetchTask,
-    Request,
-    Response
-}};
-use anyhow::Error;
-use yew::format::{Json, Nothing};
+  fetch::{FetchTask, Request, Response},
+  ConsoleService, FetchService,
+};
 
 pub fn get_current_page() -> AppRoutes {
   let string_value = match yew::utils::document().url() {
     Ok(u) => {
       let s = u.split("/").last().unwrap();
       format!("/{}", s)
-    },
+    }
     Err(e) => format!("{:?}", e),
   };
 
@@ -36,9 +33,9 @@ pub fn update_menu_bar(app: &mut App) -> bool {
   }
 }
 
-
 pub fn get_projects<T: yew::Component>(link: ComponentLink<T>) -> Option<FetchTask>
-where T::Message: From<ProjectsMsg>
+where
+  T::Message: From<ProjectsMsg>,
 {
   let request = Request::get("/api/v1/projects")
     .body(Nothing)
@@ -55,10 +52,12 @@ where T::Message: From<ProjectsMsg>
 
   match FetchService::fetch(request, callback) {
     Ok(f) => Some(f),
-    Err(e) => {ConsoleService::error(format!("{:?}", e).as_str()); None},
+    Err(e) => {
+      ConsoleService::error(format!("{:?}", e).as_str());
+      None
+    }
   }
 }
-
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct ProjectRes {

@@ -1,20 +1,16 @@
-use yew::prelude::*;
-use yewtil::NeqAssign;
-use yew_services::{
-  ConsoleService, FetchService, 
-  fetch::{
-    FetchTask,
-    Request,
-    Response
-  }};
 use crate::components::{Button, Colour};
-use yew::format::{Nothing, Json};
 use anyhow::Error;
 use serde::Deserialize;
+use yew::format::{Json, Nothing};
+use yew::prelude::*;
+use yew_services::{
+  fetch::{FetchTask, Request, Response},
+  ConsoleService, FetchService,
+};
+use yewtil::NeqAssign;
 
 #[derive(Clone, PartialEq, Properties)]
-pub struct Props {
-}
+pub struct Props {}
 
 pub struct Forked {
   props: Props,
@@ -51,12 +47,12 @@ impl Component for Forked {
         self.forks = Some(s.forks);
         self.task = None;
         true
-      },
+      }
       Msg::Nothing => {
         ConsoleService::error("Request failed");
         self.task = None;
-        false 
-      },
+        false
+      }
       Msg::ToggleVersionList => {
         self.version_list_visible = !self.version_list_visible;
         true
@@ -70,10 +66,10 @@ impl Component for Forked {
 
   fn view(&self) -> Html {
     let firefox_button = html! {
-      <Button 
-        text="Download for Firefox" 
-        colour=Colour::Custom("bg-gradient-to-br from-[#ff5b2d] to-[#ffc328] hover:from-base-lt hover:to-base-lt".to_string()) 
-        icon="/static/firefox.png" 
+      <Button
+        text="Download for Firefox"
+        colour=Colour::Custom("bg-gradient-to-br from-[#ff5b2d] to-[#ffc328] hover:from-base-lt hover:to-base-lt".to_string())
+        icon="/static/firefox.png"
       />
     };
     let base_url = "https://mxrr.dev/files/";
@@ -81,8 +77,8 @@ impl Component for Forked {
     html! {
       <div class="flex flex-col justify-center items-center mt-2 animate-blur-in">
         <h1 class="font-mulish lg:text-4xl md:text-3xl">{"Forked YouTube Gaming"}</h1>
-        <img 
-          src="https://raw.githubusercontent.com/mxrr/BetterYTG/master/src/assets/icons/BetterYTG_red_128.png" 
+        <img
+          src="https://raw.githubusercontent.com/mxrr/BetterYTG/master/src/assets/icons/BetterYTG_red_128.png"
           alt="forkedytg logo"
           class="w-64 h-64"
         />
@@ -99,9 +95,9 @@ impl Component for Forked {
                   </a>
                   <div class="flex flex-col justify-center items-center">
                     <span onclick={self.link.callback(|_| Msg::ToggleVersionList)}>
-                      <Button 
-                        text={ if self.version_list_visible { "Hide all versions" } else { "Show all versions" } } 
-                        colour=Colour::Secondary 
+                      <Button
+                        text={ if self.version_list_visible { "Hide all versions" } else { "Show all versions" } }
+                        colour=Colour::Secondary
                       />
                     </span>
                     { if self.version_list_visible {
@@ -127,8 +123,8 @@ impl Component for Forked {
           </div>
           <div>
             <a href="https://chrome.google.com/webstore/detail/forked-youtube-gaming/dehjikmfbdokdlkkchepifefodnmkmld?hl=en">
-              <Button 
-                text="Download for Chrome" 
+              <Button
+                text="Download for Chrome"
                 colour=Colour::Custom("bg-[#4086f4]".to_string())
                 icon="/static/chrome.png"
               />
@@ -156,12 +152,15 @@ fn get_forks(link: ComponentLink<Forked>) -> Option<FetchTask> {
 
   match FetchService::fetch(request, callback) {
     Ok(f) => Some(f),
-    Err(e) => {ConsoleService::error(format!("{:?}", e).as_str()); None},
+    Err(e) => {
+      ConsoleService::error(format!("{:?}", e).as_str());
+      None
+    }
   }
 }
 #[derive(Deserialize, Debug, Clone)]
 pub struct Forks {
-  forks: Vec<Fork>
+  forks: Vec<Fork>,
 }
 #[derive(Deserialize, Debug, Clone)]
 struct Fork {

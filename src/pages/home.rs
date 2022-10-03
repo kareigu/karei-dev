@@ -1,16 +1,15 @@
-use yew::prelude::*;
-use yew_services::ConsoleService;
-use yew_services::fetch::FetchTask;
-use yewtil::NeqAssign;
-use yew_router::components::Link;
+use crate::components::{Project, ProjectBlock};
+use crate::pages::ProjectsMsg;
 use crate::router::AppRoutes;
 use crate::utils;
-use crate::pages::ProjectsMsg;
-use crate::components::{Project, ProjectBlock};
+use yew::prelude::*;
+use yew_router::components::Link;
+use yew_services::fetch::FetchTask;
+use yew_services::ConsoleService;
+use yewtil::NeqAssign;
 
 #[derive(Clone, PartialEq, Properties)]
-pub struct Props {
-}
+pub struct Props {}
 
 #[allow(dead_code)]
 pub struct Home {
@@ -45,12 +44,12 @@ impl Component for Home {
           self.task = None;
           false
         }
-      },
+      }
       Self::Message::Nothing => {
         ConsoleService::error("Request failed");
         self.task = None;
         false
-      },
+      }
     }
   }
 
@@ -67,12 +66,12 @@ impl Component for Home {
           </div>
         </div>
 
-        { 
+        {
           if let Some(project) = &self.featured_project {
-            html! { 
+            html! {
               <>
                 <h1 class="font-mulish lg:text-4xl md:text-3xl mt-24 select-none">{"Featured Project"}</h1>
-                <ProjectBlock project=project.clone() /> 
+                <ProjectBlock project=project.clone() />
               </>
             }
           } else {
@@ -83,16 +82,16 @@ impl Component for Home {
         <div class="flex flex-col justify-center transition-all items-center animate-slide-up mt-6 bg-black bg-opacity-20 mb-20 rounded-md border-2 border-black border-opacity-20 hover:border-opacity-100 hover:border-base-lt">
           <Link<AppRoutes> route=AppRoutes::Forked classes=classes!("flex flex-col justify-center items-center pt-5 px-14".to_string())>
             <h1 class="font-mulish lg:text-4xl md:text-3xl select-none">{"Forked YouTube Gaming"}</h1>
-            <img 
-              src="https://raw.githubusercontent.com/mxrr/BetterYTG/master/src/assets/icons/BetterYTG_red_128.png" 
+            <img
+              src="https://raw.githubusercontent.com/mxrr/BetterYTG/master/src/assets/icons/BetterYTG_red_128.png"
               alt="forkedytg logo"
               class="w-64 h-64"
             />
           </Link<AppRoutes>>
         </div>
-        
 
-        
+
+
       </div>
     }
   }

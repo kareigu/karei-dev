@@ -1,20 +1,15 @@
-use yew::prelude::*;
-use yewtil::NeqAssign;
-use crate::components::{ProjectBlock, Project};
-use yew_services::{
-  ConsoleService, 
-  fetch::{
-    FetchTask,
-}};
+use crate::components::{Project, ProjectBlock};
 use crate::utils;
+use yew::prelude::*;
+use yew_services::{fetch::FetchTask, ConsoleService};
+use yewtil::NeqAssign;
 
 #[derive(Clone, PartialEq, Properties, Debug)]
-pub struct Props {
-}
+pub struct Props {}
 
 pub enum Msg {
   RecProjects(utils::ProjectRes),
-  Nothing
+  Nothing,
 }
 
 #[allow(dead_code)]
@@ -45,12 +40,12 @@ impl Component for Projects {
         self.projects = Some(p.projects);
         self.task = None;
         true
-      },
+      }
       Msg::Nothing => {
         ConsoleService::error("Request failed");
         self.task = None;
         false
-      },
+      }
     }
   }
 
@@ -62,7 +57,7 @@ impl Component for Projects {
     ConsoleService::log(format!("{:?}", self).as_str());
     html! {
       <div class="flex flex-col desktop:flex-row desktop:flex-wrap justify-center items-center">
-        { 
+        {
           if let Some(projects) = &self.projects {
             projects.iter()
               .map(|p| {
@@ -77,5 +72,3 @@ impl Component for Projects {
     }
   }
 }
-
-

@@ -4,7 +4,7 @@ use yewtil::NeqAssign;
 #[derive(Clone, PartialEq)]
 pub enum Type {
   List,
-  Table
+  Table,
 }
 
 #[derive(Clone, PartialEq, Properties)]
@@ -23,9 +23,7 @@ impl Component for GeneralContainer {
   type Properties = Props;
 
   fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self {
-      props
-    }
+    Self { props }
   }
 
   fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -50,7 +48,7 @@ impl Component for GeneralContainer {
         <div class="flex flex-row justify-center items-center primary-accent-wavy py-2 rounded-t-md">
           <h1 class=title_styles>{ &self.props.title }</h1>
         </div>
-        
+
         <div class="bg-white bg-opacity-5 rounded-sm flex justify-center py-2 items-center">
           {
             match &self.props.content_type {
@@ -58,7 +56,7 @@ impl Component for GeneralContainer {
                 html! {
                 <ul>
                   { self.props.children.clone() }
-                </ul> 
+                </ul>
                 }
               },
               Type::Table => {
@@ -84,7 +82,7 @@ pub struct TProps {
 }
 
 pub struct TableItem {
-  props: TProps
+  props: TProps,
 }
 
 impl Component for TableItem {
@@ -92,9 +90,7 @@ impl Component for TableItem {
   type Properties = TProps;
 
   fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self {
-      props
-    }
+    Self { props }
   }
 
   fn update(&mut self, _msg: Self::Message) -> ShouldRender {
