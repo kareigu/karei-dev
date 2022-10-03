@@ -1,26 +1,18 @@
-use crate::components::Project;
-use crate::pages::ProjectsMsg;
 use crate::{router::AppRoutes, App};
-use anyhow::Error;
 use serde::Deserialize;
-use yew::format::{Json, Nothing};
-use yew::prelude::*;
+use wasm_bindgen::{JsCast, JsValue};
+use wasm_bindgen_futures::JsFuture;
+use web_sys::{console::info_1, Request, RequestInit, RequestMode, Response};
 use yew_router::Routable;
-use yew_services::{
-  fetch::{FetchTask, Request, Response},
-  ConsoleService, FetchService,
-};
 
 pub fn get_current_page() -> AppRoutes {
-  let string_value = match yew::utils::document().url() {
-    Ok(u) => {
-      let s = u.split("/").last().unwrap();
-      format!("/{}", s)
-    }
-    Err(e) => format!("{:?}", e),
-  };
-
-  AppRoutes::recognize(&string_value).unwrap_or(AppRoutes::NotFound)
+  web_sys::window()
+    .and_then(|window| window.document())
+    .and_then(|document| document.base_uri().ok())
+    .and_then(|o| o)
+    .and_then(|s| Some(s.split("/").last()?.to_string()))
+    .and_then(|s| AppRoutes::recognize(&s))
+    .unwrap_or(AppRoutes::NotFound)
 }
 
 pub fn update_menu_bar(app: &mut App) -> bool {
@@ -33,33 +25,21 @@ pub fn update_menu_bar(app: &mut App) -> bool {
   }
 }
 
-pub fn get_projects<T: yew::Component>(link: ComponentLink<T>) -> Option<FetchTask>
+pub async fn fetch_get<T>(url: &str) -> Result<T, JsValue>
 where
-  T::Message: From<ProjectsMsg>,
+  T: for<'de> Deserialize<'de>,
 {
-  let request = Request::get("/api/v1/projects")
-    .body(Nothing)
-    .expect("Failed to create request");
+  let mut opts = RequestInit::new();
+  opts.method("GET");
+  opts.mode(RequestMode::Cors);
 
-  let callback = link.callback(|response: Response<Json<Result<ProjectRes, Error>>>| {
-    if let (meta, Json(Ok(body))) = response.into_parts() {
-      if meta.status.is_success() {
-        return ProjectsMsg::RecProjects(body);
-      }
-    }
-    ProjectsMsg::Nothing
-  });
+  let request = Request::new_with_str_and_init(url, &opts)?;
 
-  match FetchService::fetch(request, callback) {
-    Ok(f) => Some(f),
-    Err(e) => {
-      ConsoleService::error(format!("{:?}", e).as_str());
-      None
-    }
-  }
-}
+  let window = web_sys::window().ok_or(JsValue::from("No window"))?;
 
-#[derive(Deserialize, Debug, Clone)]
-pub struct ProjectRes {
-  pub projects: Vec<Project>,
+  let resp_value = JsFuture::from(window.fetch_with_request(&request)).await?;
+  let res: Response = resp_value.dyn_into()?;
+
+  let json = JsFuture::from(res.json()?).await?;
+  Ok(serde_wasm_bindgen::from_value(json)?)
 }

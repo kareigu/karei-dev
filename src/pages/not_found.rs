@@ -1,40 +1,33 @@
 use crate::components::NavButton;
 use crate::router::AppRoutes;
 use yew::prelude::*;
-use yewtil::NeqAssign;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {}
 
-pub struct NotFound {
-  props: Props,
-}
+pub struct NotFound {}
 
 impl Component for NotFound {
   type Message = ();
   type Properties = Props;
 
-  fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self { props }
+  fn create(_ctx: &Context<Self>) -> Self {
+    Self {}
   }
 
-  fn update(&mut self, _msg: Self::Message) -> ShouldRender {
+  fn update(&mut self, _ctx: &Context<Self>, _msg: Self::Message) -> bool {
     false
   }
 
-  fn change(&mut self, props: Self::Properties) -> ShouldRender {
-    self.props.neq_assign(props)
-  }
-
-  fn view(&self) -> Html {
+  fn view(&self, _cxt: &Context<Self>) -> Html {
     html! {
       <div class="flex flex-col justify-center items-center animation-">
         <h1 class="text-3xl my-3">{"404"}</h1>
         <img data-trunk="true" src="/static/PepegaSit.png" alt="404 - pepega" class="my-3" />
         <NavButton
-          to=AppRoutes::Home
+          to={ AppRoutes::Home }
           text="Go back home"
-          active=AppRoutes::NotFound
+          active={ AppRoutes::NotFound }
           styles="rounded-b-md bg-base-md mt-6"
         />
       </div>

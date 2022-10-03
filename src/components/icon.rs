@@ -1,5 +1,4 @@
 use yew::prelude::*;
-use yewtil::NeqAssign;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
@@ -7,28 +6,22 @@ pub struct Props {
   pub disable_invert: Option<bool>,
 }
 
-pub struct Icon {
-  props: Props,
-}
+pub struct Icon {}
 
 impl Component for Icon {
   type Message = ();
   type Properties = Props;
 
-  fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self { props }
+  fn create(_ctx: &Context<Self>) -> Self {
+    Self {}
   }
 
-  fn update(&mut self, _msg: Self::Message) -> ShouldRender {
+  fn update(&mut self, _ctx: &Context<Self>, _msg: Self::Message) -> bool {
     false
   }
 
-  fn change(&mut self, props: Self::Properties) -> ShouldRender {
-    self.props.neq_assign(props)
-  }
-
-  fn view(&self) -> Html {
-    let icon = match self.props.icon.as_str() {
+  fn view(&self, ctx: &Context<Self>) -> Html {
+    let icon = match ctx.props().icon.as_str() {
       "gh" => "/static/GitHub-Mark-32px.png",
       "image" => "/static/image.png",
       "compass" => "/static/compass.png",
@@ -38,7 +31,7 @@ impl Component for Icon {
       _ => "",
     };
 
-    let class = if let Some(b) = self.props.disable_invert {
+    let class = if let Some(b) = ctx.props().disable_invert {
       if !b {
         classes!("filter invert m-2".to_string())
       } else {
@@ -49,7 +42,7 @@ impl Component for Icon {
     };
 
     html! {
-      <img class=class src={ icon } alt={ self.props.icon.clone() } width="24px" height="24px" />
+      <img class={ class } src={ icon } alt={ ctx.props().icon.clone() } width="24px" height="24px" />
     }
   }
 }

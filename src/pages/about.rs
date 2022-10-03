@@ -1,13 +1,11 @@
 use crate::components::{ExperienceContainer, GeneralContainer, Icon, ListItem, TableItem, Type};
 use js_sys::Date;
 use yew::prelude::*;
-use yewtil::NeqAssign;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {}
 
 pub struct About {
-  props: Props,
   age: u32,
 }
 
@@ -15,23 +13,19 @@ impl Component for About {
   type Message = ();
   type Properties = Props;
 
-  fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
+  fn create(_ctx: &Context<Self>) -> Self {
     let dob = Date::parse("19 May 2000");
     let difference = Date::now() - dob;
     let age = (difference / 3.154e+10) as u32;
 
-    Self { props, age }
+    Self { age }
   }
 
-  fn update(&mut self, _msg: Self::Message) -> ShouldRender {
+  fn update(&mut self, _ctx: &Context<Self>, _msg: Self::Message) -> bool {
     false
   }
 
-  fn change(&mut self, props: Self::Properties) -> ShouldRender {
-    self.props.neq_assign(props)
-  }
-
-  fn view(&self) -> Html {
+  fn view(&self, _ctx: &Context<Self>) -> Html {
     let social_classes = classes!(
       "bg-base-lt hover:bg-tertiary-accent-md rounded-full mx-4 transition-colors".to_string()
     );
@@ -40,14 +34,14 @@ impl Component for About {
       <div class="flex flex-col justify-center bg-base-dk bg-opacity-80 rounded-2xl items-center overflow-x-hidden">
         <div class="py-2 animate-blur-in">
           <div class="flex justify-center items-center mb-4">
-            <a class=social_classes.clone() href="https://github.com/kareigu" target="_blank">
+            <a class={social_classes.clone()} href="https://github.com/kareigu" target="_blank">
               <Icon icon="gh" />
             </a>
-            <a class=social_classes.clone() href="https://twitter.com/kareigu" target="_blank">
-              <Icon icon="twitter" disable_invert=true />
+            <a class={social_classes.clone()} href="https://twitter.com/kareigu" target="_blank">
+              <Icon icon="twitter" disable_invert={true} />
             </a>
-            <a class=social_classes.clone() href="https://steamcommunity.com/id/kareigu/" target="_blank">
-              <Icon icon="steam" disable_invert=true />
+            <a class={social_classes.clone()} href="https://steamcommunity.com/id/kareigu/" target="_blank">
+              <Icon icon="steam" disable_invert={true} />
             </a>
           </div>
           <div class="text-center mb-4 mx-2">
@@ -130,7 +124,7 @@ impl Component for About {
             </>
             </ExperienceContainer>
 
-            <GeneralContainer title="Languages" content_type=Type::Table>
+            <GeneralContainer title="Languages" content_type={Type::Table}>
               <TableItem label="🇫🇮 Finnish:" text="🔵🔵🔵🔵🔵" />
               <TableItem label="🇬🇧 English:" text="🔵🔵🔵🔵🔵" />
               <TableItem label="🇸🇪 Swedish:" text="🔵🔵🔵⚫⚫" />
@@ -138,7 +132,7 @@ impl Component for About {
               <TableItem label="🇩🇪 German:" text="🔵⚫⚫⚫⚫" />
             </GeneralContainer>
 
-            <GeneralContainer title="Skills" content_type=Type::List>
+            <GeneralContainer title="Skills" content_type={Type::List}>
               <li class="text-center">
                 <dl>
                   <dl>{"📝 Programming languages:"}</dl>
