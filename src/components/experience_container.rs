@@ -20,9 +20,7 @@ impl Component for ExperienceContainer {
   type Properties = Props;
 
   fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self {
-      props
-    }
+    Self { props }
   }
 
   fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -36,7 +34,7 @@ impl Component for ExperienceContainer {
   fn view(&self) -> Html {
     let title_styles = if self.props.title.chars().count() > 28 as usize {
       classes!("font-mulish text-l md:text-xl".to_string())
-    } else if self.props.title.chars().count() > 24 as usize {
+    } else if self.props.title.chars().count() > 22 as usize {
       classes!("font-mulish text-2xl".to_string())
     } else {
       classes!("font-mulish text-3xl".to_string())
@@ -59,7 +57,7 @@ impl Component for ExperienceContainer {
           </div>
           <div class="mr-1 ml-auto md:w-[48px] md:h-[48px]" />
         </div>
-        
+
         <div class="bg-white bg-opacity-5 rounded-sm">
           <ul>
             { self.props.children.clone() }
@@ -79,7 +77,7 @@ pub struct LProps {
 }
 
 pub struct ListItem {
-  props: LProps
+  props: LProps,
 }
 
 impl Component for ListItem {
@@ -87,9 +85,7 @@ impl Component for ListItem {
   type Properties = LProps;
 
   fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self {
-      props
-    }
+    Self { props }
   }
 
   fn update(&mut self, _msg: Self::Message) -> ShouldRender {

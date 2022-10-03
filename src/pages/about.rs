@@ -1,11 +1,10 @@
+use crate::components::{ExperienceContainer, GeneralContainer, Icon, ListItem, TableItem, Type};
+use js_sys::Date;
 use yew::prelude::*;
 use yewtil::NeqAssign;
-use crate::components::{ExperienceContainer, ListItem, GeneralContainer, TableItem, Type, Icon};
-use js_sys::Date;
 
 #[derive(Clone, PartialEq, Properties)]
-pub struct Props {
-}
+pub struct Props {}
 
 pub struct About {
   props: Props,
@@ -21,10 +20,7 @@ impl Component for About {
     let difference = Date::now() - dob;
     let age = (difference / 3.154e+10) as u32;
 
-    Self {
-      props,
-      age
-    }
+    Self { props, age }
   }
 
   fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -36,7 +32,9 @@ impl Component for About {
   }
 
   fn view(&self) -> Html {
-    let social_classes = classes!("bg-base-lt hover:bg-tertiary-accent-md rounded-full mx-4 transition-colors".to_string());
+    let social_classes = classes!(
+      "bg-base-lt hover:bg-tertiary-accent-md rounded-full mx-4 transition-colors".to_string()
+    );
 
     html! {
       <div class="flex flex-col justify-center items-center overflow-x-hidden">
@@ -63,36 +61,28 @@ impl Component for About {
         <div class="flex flex-col desktop:flex-row desktop:items-start justify-center items-center">
           <div class="flex flex-col justify-center items-center">
             <h1 class="font-mulish text-4xl">{ "Experience" }</h1>
-            <ExperienceContainer 
-              img="/static/abb.png" 
-              title="IT Trainee (part-time)" 
-              location="Helsinki, Finland" 
+            <ExperienceContainer
+              img="/static/abb.png"
+              title="IT Trainee"
+              location="Helsinki, Finland"
               company="ABB Drives"
-              timespan="October 2021 - Present"
+              timespan="May 2021 - Present"
             >
             <>
-              <ListItem text="More work on an algorithm for automating instruction generation (TypeScript)" />
+              <ListItem text="Working full time during summer, part time rest of the year" />
+              <ListItem text="Updating and working on a legacy document management software (C++, Qt)" />
               <ListItem text="Creating a program for automating AR-workspace cleanup (TypeScript)" />
-              <ListItem text="Working on an augmented reality application (Angular.js)" />
-            </>
-            </ExperienceContainer>
-            <ExperienceContainer 
-              img="/static/abb.png" 
-              title="IT Summer Trainee" 
-              location="Helsinki, Finland" 
-              company="ABB Drives"
-              timespan="End of May - Mid-August 2021"
-            >
-            <>
+              <ListItem text="Working on an augmented reality application (JavaScript, Angular.js)" />
+              <ListItem text="Producing instructional videos and documentation on AR/VR applications" />
+              <ListItem text="Worked on creating an algorithm for automating manual generation (TypeScript)" />
               <ListItem text="Creating animated service manual instructions from 3D-models" />
-              <ListItem text="Worked on creating an algorithm for automating instruction generation (TypeScript)" />
-              <ListItem text="Working on an augmented reality application (Angular.js)" />
+              <ListItem text="General documentation and DevOps" />
             </>
             </ExperienceContainer>
-            <ExperienceContainer 
-              img="/static/fdf.png" 
-              title="Virtual Training Assistant" 
-              location="Vekaranjärvi, Kouvola, Finland" 
+            <ExperienceContainer
+              img="/static/fdf.png"
+              title="Virtual Training Assistant"
+              location="Vekaranjärvi, Kouvola, Finland"
               company="Finnish Defence Forces"
               timespan="February - September 2020"
             >
@@ -112,10 +102,10 @@ impl Component for About {
               <ListItem text="Teaching Unreal Engine 4 basics domestically to new conscripts" />
             </>
             </ExperienceContainer>
-            <ExperienceContainer 
-              img="/static/3step.png" 
-              title="TET Worker" 
-              location="Helsinki, Finland" 
+            <ExperienceContainer
+              img="/static/3step.png"
+              title="Work experience program"
+              location="Helsinki, Finland"
               company="3Step IT Oy"
               timespan="1 week in 2014"
             >
@@ -128,10 +118,10 @@ impl Component for About {
 
           <div class="flex flex-col justify-center items-center">
             <h1 class="font-mulish text-4xl">{ "Studies" }</h1>
-            <ExperienceContainer 
-              img="/static/hh.png" 
-              title="BBA - Business Information Technology" 
-              location="Pasila, Helsinki, Finland" 
+            <ExperienceContainer
+              img="/static/hh.png"
+              title="BBA - Business Information Technology"
+              location="Pasila, Helsinki, Finland"
               company="Haaga-Helia University of Applied Sciences"
               timespan="August 2019 - Present"
             >
@@ -163,7 +153,6 @@ impl Component for About {
                 <dl>
                   <dl>{"🎨 Frameworks:"}</dl>
                   <dd>{"React"}</dd>
-                  <dd>{"VueJS"}</dd>
                   <dd>{"Angular"}</dd>
                   <dd>{"express.js"}</dd>
                   <dd>{"Svelte"}</dd>
@@ -171,6 +160,7 @@ impl Component for About {
                   <dd>{"Rocket.rs"}</dd>
                   <dd>{"Yew.rs"}</dd>
                   <dd>{"Fiber"}</dd>
+                  <dd>{"Qt"}</dd>
                 </dl>
               </li>
 
@@ -178,8 +168,8 @@ impl Component for About {
                 <dl>
                   <dl>{"💾 Development software:"}</dl>
                   <dd>{"Visual Studio Code"}</dd>
-                  <dd>{"Atom"}</dd>
                   <dd>{"vim"}</dd>
+                  <dd>{"cmake"}</dd>
                   <dd>{"npm & yarn"}</dd>
                   <dd>{"Unreal Engine 4"}</dd>
                   <dd>{"MongoDB"}</dd>
@@ -203,9 +193,9 @@ impl Component for About {
                   <dd>{"Adobe Photoshop"}</dd>
                   <dd>{"Adobe Lightroom"}</dd>
                   <dd>{"Adobe Premiere"}</dd>
+                  <dd>{"Blender"}</dd>
                   <dd>{"DaVinci Resolve"}</dd>
                   <dd>{"Cubase"}</dd>
-                  <dd>{"Blender"}</dd>
                 </dl>
               </li>
             </GeneralContainer>
