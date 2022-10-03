@@ -1,6 +1,6 @@
 FROM node:alpine as css_builder
 
-WORKDIR /usr/src/mxrr-dev
+WORKDIR /usr/src/karei-dev
 
 COPY ./src ./src
 COPY ./styles ./styles
@@ -18,9 +18,9 @@ FROM rust:bullseye as rust_builder
 
 WORKDIR /usr/src
 
-RUN USER=root cargo new --bin mxrr-dev
+RUN USER=root cargo new --bin karei-dev
 
-WORKDIR /usr/src/mxrr-dev
+WORKDIR /usr/src/karei-dev
 
 RUN bash -cl "wget -qO- https://github.com/thedodd/trunk/releases/download/v0.11.0/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-"
 RUN bash -cl "mv ./trunk /usr/bin/"
@@ -44,13 +44,13 @@ COPY ./static ./static
 COPY ./index.html ./index.html
 COPY ./favicon.ico ./favicon.ico
 
-COPY --from=css_builder /usr/src/mxrr-dev/styles ./styles
+COPY --from=css_builder /usr/src/karei-dev/styles ./styles
 
 RUN trunk build --release
 
 FROM golang:alpine
 
-WORKDIR /go/src/mxrr-dev
+WORKDIR /go/src/karei-dev
 
 COPY ./main.go ./main.go
 COPY go.* ./
@@ -62,6 +62,6 @@ RUN go get -d -v ./...
 RUN apk add --update make
 RUN make go-build
 
-COPY --from=rust_builder /usr/src/mxrr-dev/dist ./dist
+COPY --from=rust_builder /usr/src/karei-dev/dist ./dist
 
 CMD ./bin/main
