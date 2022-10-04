@@ -22,12 +22,12 @@ RUN USER=root cargo new --bin karei-dev
 
 WORKDIR /usr/src/karei-dev
 
-RUN bash -cl "wget -qO- https://github.com/thedodd/trunk/releases/download/v0.11.0/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-"
+RUN bash -cl "wget -qO- https://github.com/thedodd/trunk/releases/download/v0.16.0/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-"
 RUN bash -cl "mv ./trunk /usr/bin/"
 
-RUN bash -cl "wget -O wasm-bindgen.tar.gz https://github.com/rustwasm/wasm-bindgen/releases/download/0.2.74/wasm-bindgen-0.2.74-x86_64-unknown-linux-musl.tar.gz \
-    && tar -xf wasm-bindgen.tar.gz \
-    && mv wasm-bindgen-0.2.74-x86_64-unknown-linux-musl wasm-bindgen"
+RUN bash -cl "wget -O wasm-bindgen.tar.gz https://github.com/rustwasm/wasm-bindgen/releases/download/0.2.83/wasm-bindgen-0.2.83-x86_64-unknown-linux-musl.tar.gz \
+  && tar -xf wasm-bindgen.tar.gz \
+  && mv wasm-bindgen-0.2.83-x86_64-unknown-linux-musl wasm-bindgen"
 RUN bash -cl "mv ./wasm-bindgen/wasm-bindgen /usr/bin/"
 RUN bash -cl "mv ./wasm-bindgen/wasm-bindgen-test-runner /usr/bin/"
 RUN bash -cl "rm -r ./wasm-bindgen/"
