@@ -18,7 +18,7 @@ func init() {
 		<meta property="og:description" content="väsinud" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://karei.dev/" />
-		<meta property="og:image" content="https://karei.dev/static/logo.gif" />`
+		<meta property="og:image" content="https://karei.dev/static/panda.webp" />`
 
 	PageData["/forkedytg"] = `
 		<meta property="og:title" content="Forked YouTube Gaming" />
@@ -32,14 +32,14 @@ func init() {
 		<meta property="og:description" content="Various projects" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://karei.dev/projects" />
-		<meta property="og:image" content="https://karei.dev/static/logo.gif" />`
+		<meta property="og:image" content="https://karei.dev/static/panda.webp" />`
 
 	PageData["/about"] = `
 		<meta property="og:title" content="karei.dev - about" />
 		<meta property="og:description" content="About page" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://karei.dev/about" />
-		<meta property="og:image" content="https://karei.dev/static/logo.gif" />`
+		<meta property="og:image" content="https://karei.dev/static/panda.webp" />`
 
 	PageData["404"] = `
 		<meta property="og:title" content="karei.dev - 404" />
