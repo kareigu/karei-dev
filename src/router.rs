@@ -3,7 +3,7 @@ use yew_router::prelude::*;
 
 use crate::pages::{About, Forked, Home, Images, NotFound, Projects};
 
-#[derive(Routable, Clone, PartialEq, Debug, Copy)]
+#[derive(Routable, Clone, Eq, PartialEq, Debug, Copy)]
 pub enum AppRoutes {
   #[at("/projects")]
   Projects,

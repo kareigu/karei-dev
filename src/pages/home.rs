@@ -7,7 +7,7 @@ use web_sys::console::error_1;
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-#[derive(Clone, PartialEq, Properties)]
+#[derive(Clone, Eq, PartialEq, Properties)]
 pub struct Props {}
 
 #[allow(dead_code)]

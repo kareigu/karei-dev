@@ -42,9 +42,9 @@ impl Component for ProjectBlock {
               .collect::<Html>()
           }
           {
-            if ctx.props().project.links.git != "" {
+            if !ctx.props().project.links.git.is_empty() {
               html! {
-                <a class="animate-pulse filter invert hover:invert-0 transition-all" href={format!("{}", ctx.props().project.links.git)} target="_blank">
+                <a class="animate-pulse filter invert hover:invert-0 transition-all" href={ ctx.props().project.links.git.clone() } target="_blank">
                   <Icon icon="gh" />
                 </a>
               }

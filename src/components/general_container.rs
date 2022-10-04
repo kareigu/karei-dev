@@ -1,6 +1,7 @@
+#![allow(clippy::derive_partial_eq_without_eq)]
 use yew::{html::ChildrenRenderer, prelude::*};
 
-#[derive(Clone, PartialEq)]
+#[derive(Clone, Eq, PartialEq)]
 pub enum Type {
   List,
   Table,
@@ -28,9 +29,9 @@ impl Component for GeneralContainer {
   }
 
   fn view(&self, ctx: &Context<Self>) -> Html {
-    let title_styles = if ctx.props().title.chars().count() > 28 as usize {
+    let title_styles = if ctx.props().title.chars().count() > 28 {
       classes!("font-mulish text-l md:text-xl".to_string())
-    } else if ctx.props().title.chars().count() > 24 as usize {
+    } else if ctx.props().title.chars().count() > 24 {
       classes!("font-mulish text-2xl".to_string())
     } else {
       classes!("font-mulish text-3xl".to_string())

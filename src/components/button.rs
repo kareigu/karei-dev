@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
 #[allow(dead_code)]
-#[derive(Clone, PartialEq)]
+#[derive(Clone, Eq, PartialEq)]
 pub enum Colour {
   Primary,
   Secondary,
@@ -9,7 +9,7 @@ pub enum Colour {
   Custom(String),
 }
 
-#[derive(Clone, PartialEq, Properties)]
+#[derive(Clone, Eq, PartialEq, Properties)]
 pub struct Props {
   pub text: String,
   pub colour: Colour,

@@ -2,7 +2,7 @@ use crate::router::AppRoutes;
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-#[derive(Clone, PartialEq, Properties)]
+#[derive(Clone, Eq, PartialEq, Properties)]
 pub struct Props {
   pub active: AppRoutes,
 }

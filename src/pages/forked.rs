@@ -7,7 +7,7 @@ use wasm_bindgen::JsValue;
 use web_sys::console::{error_1, log_1};
 use yew::prelude::*;
 
-#[derive(Clone, PartialEq, Properties)]
+#[derive(Clone, Eq, PartialEq, Properties)]
 pub struct Props {}
 
 pub struct Forked {
@@ -107,7 +107,7 @@ impl Component for Forked {
                       />
                     </span>
                     { if self.version_list_visible {
-                        forks.into_iter()
+                        forks.iter()
                         .map(|f| html! {
                           <div class="animate-slide-down">
                             <a href={format!("{}{}", base_url, f.filename.clone())}>

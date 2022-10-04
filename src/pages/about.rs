@@ -2,7 +2,7 @@ use crate::components::{ExperienceContainer, GeneralContainer, Icon, ListItem, T
 use js_sys::Date;
 use yew::prelude::*;
 
-#[derive(Clone, PartialEq, Properties)]
+#[derive(Clone, Eq, PartialEq, Properties)]
 pub struct Props {}
 
 pub struct About {

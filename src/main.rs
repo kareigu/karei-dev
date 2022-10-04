@@ -48,13 +48,13 @@ impl Component for App {
         <div class="primary-zigzag filter drop-shadow-md">
           <div class="flex justify-evenly bg-primary-middle-blend">
             <HomeButton
-              active={self.active_route.clone()}
+              active={self.active_route}
             />
             <span id="projects-btn" class="flex flex-col">
             <NavButton
               to={AppRoutes::Projects}
               text="Projects"
-              active={self.active_route.clone()}
+              active={self.active_route}
               styles="rounded-bl-md"
             />
             </span>
@@ -62,7 +62,7 @@ impl Component for App {
             <NavButton
               to={AppRoutes::About}
               text="About"
-              active={self.active_route.clone()}
+              active={self.active_route}
             />
             </span>
           </div>

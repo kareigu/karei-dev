@@ -2,7 +2,7 @@ use crate::components::NavButton;
 use crate::router::AppRoutes;
 use yew::prelude::*;
 
-#[derive(Clone, PartialEq, Properties)]
+#[derive(Clone, Eq, PartialEq, Properties)]
 pub struct Props {}
 
 pub struct NotFound {}

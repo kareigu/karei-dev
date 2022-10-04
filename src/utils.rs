@@ -2,7 +2,7 @@ use crate::{router::AppRoutes, App};
 use serde::Deserialize;
 use wasm_bindgen::{JsCast, JsValue};
 use wasm_bindgen_futures::JsFuture;
-use web_sys::{console::info_1, Request, RequestInit, RequestMode, Response};
+use web_sys::{Request, RequestInit, RequestMode, Response};
 use yew_router::Routable;
 
 pub fn get_current_page() -> AppRoutes {
@@ -10,7 +10,7 @@ pub fn get_current_page() -> AppRoutes {
     .and_then(|window| window.document())
     .and_then(|document| document.base_uri().ok())
     .and_then(|o| o)
-    .and_then(|s| Some(s.split("/").last()?.to_string()))
+    .and_then(|s| Some(s.split('/').last()?.to_string()))
     .and_then(|s| AppRoutes::recognize(&s))
     .unwrap_or(AppRoutes::NotFound)
 }
@@ -35,7 +35,7 @@ where
 
   let request = Request::new_with_str_and_init(url, &opts)?;
 
-  let window = web_sys::window().ok_or(JsValue::from("No window"))?;
+  let window = web_sys::window().ok_or_else(|| JsValue::from("No window"))?;
 
   let resp_value = JsFuture::from(window.fetch_with_request(&request)).await?;
   let res: Response = resp_value.dyn_into()?;

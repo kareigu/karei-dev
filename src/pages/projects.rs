@@ -5,7 +5,7 @@ use wasm_bindgen::JsValue;
 use web_sys::console::error_1;
 use yew::prelude::*;
 
-#[derive(Clone, PartialEq, Properties, Debug)]
+#[derive(Clone, Eq, PartialEq, Properties, Debug)]
 pub struct Props {}
 
 pub enum Msg {
