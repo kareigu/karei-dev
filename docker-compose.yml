@@ -6,7 +6,7 @@ services:
     ports:
       - 3030:3030
     volumes:
-      - ./pagedata:/go/src/mxrr-dev/pagedata
-      - ./files:/go/src/mxrr-dev/files
-      - ./logs:/go/src/mxrr-dev/logs
-      - ./certs:/go/src/mxrr-dev/certs
+      - ./pagedata:/go/src/karei-dev/pagedata
+      - ./files:/go/src/karei-dev/files
+      - ./logs:/go/src/karei-dev/logs
+      - ./certs:/go/src/karei-dev/certs
