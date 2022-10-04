@@ -1,10 +1,9 @@
-
 mod home;
 pub use home::Home;
 
 mod projects;
-pub use projects::Projects;
 pub use projects::Msg as ProjectsMsg;
+pub use projects::Projects;
 
 mod about;
 pub use about::About;

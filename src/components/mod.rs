@@ -9,8 +9,8 @@ pub use button::Button;
 pub use button::Colour;
 
 mod projectblock;
-pub use projectblock::ProjectBlock;
 pub use projectblock::Project;
+pub use projectblock::ProjectBlock;
 
 mod icon;
 pub use icon::Icon;

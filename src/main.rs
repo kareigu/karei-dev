@@ -2,17 +2,15 @@ use yew::prelude::*;
 use yew_router::prelude::*;
 
 mod router;
-use router::{AppRoutes, switch};
+use router::{switch, AppRoutes};
 
 mod components;
-use components::{NavButton, HomeButton};
+use components::{HomeButton, NavButton};
 
 mod pages;
 
 mod utils;
 use utils::{get_current_page, update_menu_bar};
-
-
 
 pub enum Msg {
   UpdateNavbar,
@@ -20,70 +18,64 @@ pub enum Msg {
 
 pub struct App {
   active_route: AppRoutes,
-  link: ComponentLink<App>,
 }
 
 impl Component for App {
   type Message = Msg;
   type Properties = ();
 
-  fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
+  fn create(_ctx: &Context<Self>) -> Self {
     let active_route = get_current_page();
 
-    Self {
-      active_route,
-      link,
-    }
+    Self { active_route }
   }
 
-  fn update(&mut self, msg: Self::Message) -> ShouldRender {
+  fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
     match msg {
-      Msg::UpdateNavbar => update_menu_bar(self)
+      Msg::UpdateNavbar => update_menu_bar(self),
     }
   }
 
-  fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-    false
-  }
+  //bg-gradient-to-tr from-primary-accent-md to-[#CF0246]
 
-//bg-gradient-to-tr from-primary-accent-md to-[#CF0246]
-
-  fn view(&self) -> Html {
+  fn view(&self, ctx: &Context<Self>) -> Html {
     html! {
-      <div 
+      <BrowserRouter>
+      <div
         class="flex flex-col justify-center"
-        onclick=self.link.callback(|_| Msg::UpdateNavbar)
+        onclick={ctx.link().callback(|_| Msg::UpdateNavbar)}
       >
         <div class="primary-zigzag filter drop-shadow-md">
           <div class="flex justify-evenly bg-primary-middle-blend">
-            <HomeButton 
-              active=self.active_route.clone()
+            <HomeButton
+              active={self.active_route}
             />
             <span id="projects-btn" class="flex flex-col">
-            <NavButton 
-              to=AppRoutes::Projects 
-              text="Projects".to_string() 
-              active=self.active_route.clone()
+            <NavButton
+              to={AppRoutes::Projects}
+              text="Projects"
+              active={self.active_route}
               styles="rounded-bl-md"
             />
             </span>
             <span id="about-btn" class="flex flex-col">
-            <NavButton 
-              to=AppRoutes::About
-              text="About".to_string() 
-              active=self.active_route.clone()
+            <NavButton
+              to={AppRoutes::About}
+              text="About"
+              active={self.active_route}
             />
             </span>
           </div>
         </div>
         <div class="flex justify-center mt-3 animate-blur-in">
-          <Router<AppRoutes> render=Router::render(switch) />
+          <Switch<AppRoutes> render={switch} />
         </div>
-      </div>        
+      </div>
+      </BrowserRouter>
     }
   }
 }
 
 fn main() {
-  yew::start_app::<App>();
+  yew::Renderer::<App>::new().render();
 }

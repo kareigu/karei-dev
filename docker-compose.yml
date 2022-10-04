@@ -1,7 +1,7 @@
 services:
   mxrr-dev:
-    image: mxr/mxrr-dev:new
-    container_name: mxrr-dev
+    image: kareigu/karei-dev:new
+    container_name: karei-dev
     restart: unless-stopped
     ports:
       - 3030:3030

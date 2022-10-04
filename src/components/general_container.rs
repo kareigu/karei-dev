@@ -1,10 +1,10 @@
+#![allow(clippy::derive_partial_eq_without_eq)]
 use yew::{html::ChildrenRenderer, prelude::*};
-use yewtil::NeqAssign;
 
-#[derive(Clone, PartialEq)]
+#[derive(Clone, Eq, PartialEq)]
 pub enum Type {
   List,
-  Table
+  Table,
 }
 
 #[derive(Clone, PartialEq, Properties)]
@@ -14,32 +14,24 @@ pub struct Props {
   pub children: ChildrenRenderer<Html>,
 }
 
-pub struct GeneralContainer {
-  props: Props,
-}
+pub struct GeneralContainer {}
 
 impl Component for GeneralContainer {
   type Message = ();
   type Properties = Props;
 
-  fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self {
-      props
-    }
+  fn create(_ctx: &Context<Self>) -> Self {
+    Self {}
   }
 
-  fn update(&mut self, _msg: Self::Message) -> ShouldRender {
+  fn update(&mut self, _ctx: &Context<Self>, _msg: Self::Message) -> bool {
     false
   }
 
-  fn change(&mut self, props: Self::Properties) -> ShouldRender {
-    self.props.neq_assign(props)
-  }
-
-  fn view(&self) -> Html {
-    let title_styles = if self.props.title.chars().count() > 28 as usize {
+  fn view(&self, ctx: &Context<Self>) -> Html {
+    let title_styles = if ctx.props().title.chars().count() > 28 {
       classes!("font-mulish text-l md:text-xl".to_string())
-    } else if self.props.title.chars().count() > 24 as usize {
+    } else if ctx.props().title.chars().count() > 24 {
       classes!("font-mulish text-2xl".to_string())
     } else {
       classes!("font-mulish text-3xl".to_string())
@@ -48,23 +40,23 @@ impl Component for GeneralContainer {
     html! {
       <div class="flex flex-col justify-center animate-slide-up desktop:animate-blur-in bg-black bg-opacity-30 rounded-md w-[calc(100vw-0.75rem)] md:w-[36rem] my-6 mx-2 md:mx-8">
         <div class="flex flex-row justify-center items-center primary-accent-wavy py-2 rounded-t-md">
-          <h1 class=title_styles>{ &self.props.title }</h1>
+          <h1 class={ title_styles }>{ ctx.props().title.clone() }</h1>
         </div>
-        
+
         <div class="bg-white bg-opacity-5 rounded-sm flex justify-center py-2 items-center">
           {
-            match &self.props.content_type {
+            match ctx.props().content_type {
               Type::List => {
                 html! {
                 <ul>
-                  { self.props.children.clone() }
-                </ul> 
+                  { ctx.props().children.clone() }
+                </ul>
                 }
               },
               Type::Table => {
                 html! {
                   <table>
-                    { self.props.children.clone() }
+                    { ctx.props().children.clone() }
                   </table>
                 }
               }
@@ -83,33 +75,25 @@ pub struct TProps {
   pub text: String,
 }
 
-pub struct TableItem {
-  props: TProps
-}
+pub struct TableItem {}
 
 impl Component for TableItem {
   type Message = ();
   type Properties = TProps;
 
-  fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self {
-      props
-    }
+  fn create(_ctx: &Context<Self>) -> Self {
+    Self {}
   }
 
-  fn update(&mut self, _msg: Self::Message) -> ShouldRender {
+  fn update(&mut self, _ctx: &Context<Self>, _msg: Self::Message) -> bool {
     false
   }
 
-  fn change(&mut self, props: Self::Properties) -> ShouldRender {
-    self.props.neq_assign(props)
-  }
-
-  fn view(&self) -> Html {
+  fn view(&self, ctx: &Context<Self>) -> Html {
     html! {
       <tr class="px-4 py-1 rounded-sm select-none">
-        <td>{ &self.props.label }</td>
-        <td>{ &self.props.text }</td>
+        <td>{ ctx.props().label.clone() }</td>
+        <td>{ ctx.props().text.clone() }</td>
       </tr>
     }
   }

@@ -1,8 +1,7 @@
 use yew::prelude::*;
-use yewtil::NeqAssign;
 
 #[allow(dead_code)]
-#[derive(Clone, PartialEq)]
+#[derive(Clone, Eq, PartialEq)]
 pub enum Colour {
   Primary,
   Secondary,
@@ -10,8 +9,7 @@ pub enum Colour {
   Custom(String),
 }
 
-
-#[derive(Clone, PartialEq, Properties)]
+#[derive(Clone, Eq, PartialEq, Properties)]
 pub struct Props {
   pub text: String,
   pub colour: Colour,
@@ -19,52 +17,47 @@ pub struct Props {
   pub icon: Option<String>,
 }
 
-pub struct Button {
-  props: Props,
-}
+pub struct Button {}
 
 impl Component for Button {
   type Message = ();
   type Properties = Props;
 
-  fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-    Self {
-      props
-    }
+  fn create(_ctx: &Context<Self>) -> Self {
+    Self {}
   }
 
-  fn update(&mut self, _msg: Self::Message) -> ShouldRender {
+  fn update(&mut self, _ctx: &Context<Self>, _msg: Self::Message) -> bool {
     false
   }
 
-  fn change(&mut self, props: Self::Properties) -> ShouldRender {
-    self.props.neq_assign(props)
-  }
-
-  fn view(&self) -> Html {
-    let colour = match self.props.colour.clone() {
+  fn view(&self, ctx: &Context<Self>) -> Html {
+    let colour = match ctx.props().colour.clone() {
       Colour::Primary => "bg-primary-accent-md".to_string(),
       Colour::Secondary => "bg-secondary-accent-md".to_string(),
       Colour::Tertiary => "bg-tertiary-accent-md".to_string(),
       Colour::Custom(s) => s,
     };
 
-    let mut classlist = classes!("text-base-lt hover:text-base-dk hover:bg-base-lt transition-colors rounded-md px-5 py-1 m-2".to_string());
+    let mut classlist = classes!(
+      "text-base-lt hover:text-base-dk hover:bg-base-lt transition-colors rounded-md px-5 py-1 m-2"
+        .to_string()
+    );
 
     classlist.push(colour);
-    classlist.push(self.props.styles.clone());
+    classlist.push(ctx.props().styles.clone());
 
-    let icon = if let Some(url) = &self.props.icon {
-      html! { <img src={url.clone()} alt="button icon" width="28px" height="28px" class="mr-2" />}
+    let icon = if let Some(url) = ctx.props().icon.clone() {
+      html! { <img src={ url.clone() } alt="button icon" width="28px" height="28px" class="mr-2" />}
     } else {
-      html!{}
+      html! {}
     };
 
     html! {
       <button class={classlist}>
         <span class="flex flex-row justify-center items-center">
           { icon }
-          { self.props.text.clone() }
+          { ctx.props().text.clone() }
         </span>
       </button>
     }

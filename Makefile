@@ -16,4 +16,4 @@ front:
 	trunk build
 
 docker:
-	docker build -t mxr/mxrr-dev:new .
+	docker build -t kareigu/karei-dev:new .

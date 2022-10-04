@@ -1,9 +1,9 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-use crate::pages::{Home, Projects, About, NotFound, Forked, Images};
+use crate::pages::{About, Forked, Home, Images, NotFound, Projects};
 
-#[derive(Routable, Clone, PartialEq, Debug, Copy)]
+#[derive(Routable, Clone, Eq, PartialEq, Debug, Copy)]
 pub enum AppRoutes {
   #[at("/projects")]
   Projects,
@@ -20,7 +20,7 @@ pub enum AppRoutes {
   Home,
 }
 
-pub fn switch(routes: &AppRoutes) -> Html {
+pub fn switch(routes: AppRoutes) -> Html {
   match routes {
     AppRoutes::Home => html! { <Home /> },
     AppRoutes::Projects => html! { <Projects /> },
