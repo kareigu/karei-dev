@@ -60,10 +60,10 @@ impl Component for About {
               title="IT Trainee"
               location="Helsinki, Finland"
               company="ABB Drives"
-              timespan="May 2021 - Present"
+              timespan="May 2021 - December 2022"
+              extra_info="Working full time during summer, part time rest of the year"
             >
             <>
-              <ListItem text="Working full time during summer, part time rest of the year" />
               <ListItem text="Updating and working on a legacy document management software (C++, Qt)" />
               <ListItem text="Creating a program for automating AR-workspace cleanup (TypeScript)" />
               <ListItem text="Working on an augmented reality application (JavaScript, Angular.js)" />
@@ -98,7 +98,7 @@ impl Component for About {
             </ExperienceContainer>
             <ExperienceContainer
               img="/static/3step.png"
-              title="Work experience program"
+              title="Work Experience Program"
               location="Helsinki, Finland"
               company="3Step IT Oy"
               timespan="1 week in 2014"
@@ -117,10 +117,12 @@ impl Component for About {
               title="BBA - Business Information Technology"
               location="Pasila, Helsinki, Finland"
               company="Haaga-Helia University of Applied Sciences"
-              timespan="August 2019 - Present"
+              timespan="August 2019 - January 2023"
+              extra_info="Majoring in software development"
             >
             <>
-              <ListItem text="Majoring in software development" />
+              <ListItem text="~4.1 GPA" />
+              <ListItem text="Wrote thesis on upgrading a legacy C++/Qt application" />
             </>
             </ExperienceContainer>
 
