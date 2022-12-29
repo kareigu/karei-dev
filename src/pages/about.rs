@@ -31,7 +31,7 @@ impl Component for About {
     );
 
     html! {
-      <div class="flex flex-col justify-center bg-base-dk bg-opacity-80 rounded-2xl items-center overflow-x-hidden">
+      <div class="flex flex-col justify-center my-4 bg-base-dk bg-opacity-80 rounded-2xl items-center overflow-x-hidden">
         <div class="py-2 animate-blur-in">
           <div class="flex justify-center items-center mb-4">
             <a class={social_classes.clone()} href="https://github.com/kareigu" target="_blank">

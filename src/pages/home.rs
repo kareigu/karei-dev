@@ -55,7 +55,7 @@ impl Component for Home {
 
   fn view(&self, _ctx: &Context<Self>) -> Html {
     html! {
-      <div class="flex flex-col justify-center bg-base-dk bg-opacity-80 rounded-2xl items-center mt-10 animate-blur-in">
+      <div class="flex flex-col justify-center bg-base-dk bg-opacity-80 rounded-2xl items-center my-10 animate-blur-in">
         <div class="w-52 h-52 rounded-full bg-logo bg-cover mt-56" >
           <div class="w-52 h-52 rounded-full border-primary-accent-md border-2 select-none pointer-events-none">
             <div class="w-52 h-52 rounded-full border-secondary-accent-md border-2 animate-pulse sm:animate-ping select-none pointer-events-none"/>
