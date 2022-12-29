@@ -31,7 +31,7 @@ impl Component for About {
     );
 
     html! {
-      <div class="flex flex-col justify-center bg-base-dk bg-opacity-80 rounded-2xl items-center overflow-x-hidden">
+      <div class="flex flex-col justify-center my-4 bg-base-dk bg-opacity-80 rounded-2xl items-center overflow-x-hidden">
         <div class="py-2 animate-blur-in">
           <div class="flex justify-center items-center mb-4">
             <a class={social_classes.clone()} href="https://github.com/kareigu" target="_blank">
@@ -46,7 +46,7 @@ impl Component for About {
           </div>
           <div class="text-center mb-4 mx-2">
             <p>{ format!("{} year old guy from Southern Finland with an interest in technology and creating things.", self.age) }</p>
-            <p class="mt-4">{ "Currently studying Business Information Technology at the Haaga-Helia University of Applied Sciences, focusing on
+            <p class="mt-4">{ "Currently wrapping up my degree in Business Information Technology at the Haaga-Helia University of Applied Sciences, focusing on
             software development." }</p>
             <p class="mt-4">{ "On the hobby side I enjoy programming, photography, video editing, 3D-modeling, playing guitar and writing music" }</p>
           </div>
@@ -60,10 +60,10 @@ impl Component for About {
               title="IT Trainee"
               location="Helsinki, Finland"
               company="ABB Drives"
-              timespan="May 2021 - Present"
+              timespan="May 2021 - December 2022"
+              extra_info="Working full time during summer, part time rest of the year"
             >
             <>
-              <ListItem text="Working full time during summer, part time rest of the year" />
               <ListItem text="Updating and working on a legacy document management software (C++, Qt)" />
               <ListItem text="Creating a program for automating AR-workspace cleanup (TypeScript)" />
               <ListItem text="Working on an augmented reality application (JavaScript, Angular.js)" />
@@ -98,7 +98,7 @@ impl Component for About {
             </ExperienceContainer>
             <ExperienceContainer
               img="/static/3step.png"
-              title="Work experience program"
+              title="Work Experience Program"
               location="Helsinki, Finland"
               company="3Step IT Oy"
               timespan="1 week in 2014"
@@ -117,10 +117,12 @@ impl Component for About {
               title="BBA - Business Information Technology"
               location="Pasila, Helsinki, Finland"
               company="Haaga-Helia University of Applied Sciences"
-              timespan="August 2019 - Present"
+              timespan="August 2019 - January 2023"
+              extra_info="Majoring in software development"
             >
             <>
-              <ListItem text="Majoring in software development" />
+              <ListItem text="~4.1 GPA" />
+              <ListItem text="Wrote thesis on upgrading a legacy C++/Qt application" />
             </>
             </ExperienceContainer>
 
