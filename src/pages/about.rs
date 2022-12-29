@@ -46,7 +46,7 @@ impl Component for About {
           </div>
           <div class="text-center mb-4 mx-2">
             <p>{ format!("{} year old guy from Southern Finland with an interest in technology and creating things.", self.age) }</p>
-            <p class="mt-4">{ "Currently studying Business Information Technology at the Haaga-Helia University of Applied Sciences, focusing on
+            <p class="mt-4">{ "Currently wrapping up my degree in Business Information Technology at the Haaga-Helia University of Applied Sciences, focusing on
             software development." }</p>
             <p class="mt-4">{ "On the hobby side I enjoy programming, photography, video editing, 3D-modeling, playing guitar and writing music" }</p>
           </div>
