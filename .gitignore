@@ -8,3 +8,4 @@ files/
 pagedata/
 logs/
 certs/
+.DS_Store
