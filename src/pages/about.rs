@@ -56,6 +56,37 @@ impl Component for About {
           <div class="flex flex-col justify-center items-center">
             <h1 class="font-mulish text-4xl">{ "Experience" }</h1>
             <ExperienceContainer
+              img="/static/eb.png"
+              title="SW Engineer"
+              location="Oulu, Finland"
+              company="Elektrobit Automotive"
+              timespan="September 2023 - Current"
+              extra_info="Remote"
+            >
+            <>
+              <ListItem text="Working on Subversion to Git migrations" />
+              <ListItem text="Creating tooling for Git migrations (Rust, sh)" />
+              <ListItem text="Providing support for Git related issues" />
+            </>
+            </ExperienceContainer>
+            <ExperienceContainer
+              img="/static/eb.png"
+              title="Trainee"
+              location="Oulu, Finland"
+              company="Elektrobit Automotive"
+              timespan="February 2023 - August 2023"
+              extra_info="Remote"
+            >
+            <>
+              <ListItem text="Working on test automation (Robot, Python)" />
+              <ListItem text="Creating and improving tooling for test automation (Python)" />
+              <ListItem text="Holding a presentation on Robot linting and auto formatting" />
+              <ListItem text="Implementing testing related functionality in libraries (C++)" />
+              <ListItem text="Working on Subversion to Git migrations" />
+              <ListItem text="Creating tooling for Git migrations (Rust, sh)" />
+            </>
+            </ExperienceContainer>
+            <ExperienceContainer
               img="/static/abb.png"
               title="IT Trainee"
               location="Helsinki, Finland"
