@@ -3,9 +3,13 @@ use yew::prelude::*;
 use yew_router::prelude::*;
 #[derive(Clone, Eq, PartialEq, Properties)]
 pub struct Props {
+  #[prop_or_default]
   pub to: AppRoutes,
+  #[prop_or_default]
   pub text: String,
+  #[prop_or_default]
   pub active: AppRoutes,
+  #[prop_or_default]
   pub styles: Option<String>,
 }
 

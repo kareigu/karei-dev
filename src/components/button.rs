@@ -9,11 +9,21 @@ pub enum Colour {
   Custom(String),
 }
 
+impl Default for Colour {
+  fn default() -> Self {
+    Self::Primary
+  }
+}
+
 #[derive(Clone, Eq, PartialEq, Properties)]
 pub struct Props {
+  #[prop_or_default]
   pub text: String,
+  #[prop_or_default]
   pub colour: Colour,
+  #[prop_or_default]
   pub styles: Option<String>,
+  #[prop_or_default]
   pub icon: Option<String>,
 }
 

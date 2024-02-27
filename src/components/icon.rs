@@ -2,7 +2,9 @@ use yew::prelude::*;
 
 #[derive(Clone, Eq, PartialEq, Properties)]
 pub struct Props {
+  #[prop_or_default]
   pub icon: String,
+  #[prop_or_default]
   pub disable_invert: Option<bool>,
 }
 

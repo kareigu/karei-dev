@@ -3,12 +3,19 @@ use yew::{html::ChildrenRenderer, prelude::*};
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
+  #[prop_or_default]
   pub img: String,
+  #[prop_or_default]
   pub title: String,
+  #[prop_or_default]
   pub location: String,
+  #[prop_or_default]
   pub company: String,
+  #[prop_or_default]
   pub timespan: String,
+  #[prop_or_default]
   pub extra_info: Option<String>,
+  #[prop_or_default]
   pub children: ChildrenRenderer<Html>,
 }
 
